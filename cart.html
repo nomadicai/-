@@ -437,32 +437,32 @@
             const totalFeeElem = document.getElementById('totalFee');
             const cashOutBtn = document.getElementById('cashOut');
             try {
-                const bookingsRef = ref(db, `users/${user.uid}/bookings`);
-                const snapshot = await get(bookingsRef);
+                const cartRef = ref(db, `users/${user.uid}/cart`);
+                const snapshot = await get(cartRef);
                 if (snapshot.exists()) {
                     cartItems.innerHTML = '';
-                    const bookings = snapshot.val();
-                    const sortedBookings = Object.entries(bookings).sort((a, b) => new Date(b[1].bookedAt) - new Date(a[1].bookedAt));
+                    const cartItemsData = snapshot.val();
+                    const sortedItems = Object.entries(cartItemsData).sort((a, b) => new Date(b[1].bookedAt) - new Date(a[1].bookedAt));
                     let totalItems = 0;
                     let totalFee = 0;
-                    sortedBookings.forEach(([key, booking]) => {
+                    sortedItems.forEach(([key, item]) => {
                         totalItems++;
-                        totalFee += booking.price;
-                        const item = document.createElement('div');
-                        item.classList.add('cart-item');
-                        item.innerHTML = `
-                            <h3>${booking.serviceName}</h3>
-                            <p><strong>Price:</strong> $${booking.price.toFixed(2)}</p>
-                            <p><strong>Status:</strong> <span class="status-${booking.status}">${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}</span></p>
-                            <p><strong>Booked At:</strong> ${new Date(booking.bookedAt).toLocaleString()}</p>
-                            ${booking.status === 'pending' ? `
+                        totalFee += item.price;
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-item');
+                        cartItem.innerHTML = `
+                            <h3>${item.serviceName}</h3>
+                            <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+                            <p><strong>Status:</strong> <span class="status-${item.status}">${item.status.charAt(0).toUpperCase() + item.status.slice(1)}</span></p>
+                            <p><strong>Booked At:</strong> ${new Date(item.bookedAt).toLocaleString()}</p>
+                            ${item.status === 'pending' ? `
                                 <div class="payment-options">
-                                    <button class="pay-btn" onclick="proceedToPayment('${key}', '${booking.serviceName}', ${booking.price})">Pay Now with IntaSend (M-Pesa STK)</button>
+                                    <button class="pay-btn" onclick="proceedToPayment('${key}', '${item.serviceName}', ${item.price})">Pay Now with IntaSend (M-Pesa STK)</button>
                                 </div>
-                            ` : booking.status === 'booked' ? '<p>Your service has been booked. Appear to our salon to be served!</p>' : ''}
-                            <button class="delete-btn" onclick="deleteBooking('${key}')"><i class="fas fa-trash"></i></button>
+                            ` : item.status === 'booked' ? '<p>Your service has been booked. Appear to our salon to be served!</p>' : ''}
+                            <button class="delete-btn" onclick="deleteItem('${key}')"><i class="fas fa-trash"></i></button>
                         `;
-                        cartItems.appendChild(item);
+                        cartItems.appendChild(cartItem);
                     });
                     totalItemsElem.textContent = totalItems;
                     totalFeeElem.textContent = `${totalFee} KES`;
@@ -482,30 +482,30 @@
             }
         }
 
-        // Delete a booking
-        window.deleteBooking = function(bookingId) {
-            if (confirm('Are you sure you want to delete this booking?')) {
+        // Delete a cart item
+        window.deleteItem = function(itemId) {
+            if (confirm('Are you sure you want to delete this item?')) {
                 const user = auth.currentUser;
                 if (user) {
-                    remove(ref(db, `users/${user.uid}/bookings/${bookingId}`))
+                    remove(ref(db, `users/${user.uid}/cart/${itemId}`))
                         .then(() => loadCart(user))
-                        .catch(error => console.error('Error deleting booking:', error));
+                        .catch(error => console.error('Error deleting item:', error));
                 }
             }
         }
 
         // Proceed to payment with IntaSend (M-Pesa STK)
-        window.proceedToPayment = function(bookingId, serviceName, price) {
+        window.proceedToPayment = function(itemId, serviceName, price) {
             const user = auth.currentUser;
             if (!user) return;
-            const paymentUrl = `https://payment.intasend.com?amount=${price}&description=${encodeURIComponent(serviceName)}&bookingId=${bookingId}&method=mpesa_stk`; // Simulated IntaSend URL with M-Pesa STK
+            const paymentUrl = `https://payment.intasend.com?amount=${price}&description=${encodeURIComponent(serviceName)}&itemId=${itemId}&method=mpesa_stk`; // Simulated IntaSend URL with M-Pesa STK
             window.open(paymentUrl, '_blank');
             alert('Redirecting to IntaSend for M-Pesa STK payment. Complete the payment to confirm your booking.');
             // In production, use IntaSend webhook to update status to 'booked' after payment
             setTimeout(() => {
                 const user = auth.currentUser;
                 if (user) {
-                    update(ref(db, `users/${user.uid}/bookings/${bookingId}`), { status: 'booked' })
+                    update(ref(db, `users/${user.uid}/cart/${itemId}`), { status: 'booked' })
                         .then(() => loadCart(user))
                         .catch(error => console.error('Error updating status:', error));
                 }
@@ -531,7 +531,7 @@
             const totalFee = document.getElementById('totalFee').textContent;
             if (parseFloat(totalFee) > 0) {
                 alert(`Cashing out with total fee: ${totalFee}. Redirecting to payment confirmation.`);
-                // In production, process all bookings to 'booked' or 'approved' status
+                // In production, process all cart items to 'booked' or 'approved' status
             }
         });
 
@@ -544,5 +544,3 @@
             });
         }
     </script>
-</body>
-</html>
