@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nomadic Salon - Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f5e9e2, #fce4ec); /* Beige to soft pink */
+      color: #3c2f2f; /* Rich brown */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #F03E29, #F08429, #F06228, #F02956, #F0BF71, #F09A79);
+      padding: 20px 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .desktop-nav {
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: center;
+      padding: 0 10px;
+      background: transparent;
+    }
+    .desktop-nav .logo {
+      margin-right: 15px;
+    }
+    .desktop-nav a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .desktop-nav a:hover {
+      color: #f5e9e2;
+    }
+    .desktop-nav .social-icons {
+      margin-left: auto;
+      display: flex;
+      gap: 12px;
+    }
+    .desktop-nav .social-icons a {
+      color: #fff;
+      font-size: 18px;
+    }
+    .desktop-nav .logout-btn {
+      margin-left: 15px;
+      padding: 8px 12px;
+      background: #fff;
+      color: #F03E29;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .desktop-nav .logout-btn:hover {
+      background: #f5e9e2;
+    }
+    .mobile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: linear-gradient(90deg, #F03E29, #F08429);
+    }
+    .mobile-header .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+    .mobile-header .social-icons a {
+      color: #fff;
+      font-size: 20px;
+    }
+    .container {
+      flex: 1;
+      padding: 15px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: left;
+      color: #6b4e31;
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    @media (min-width: 600px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .service-card-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card h3 {
+      font-size: 20px;
+      color: #9B6845;
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 14px;
+      margin-bottom: 6px;
+      line-height: 1.5;
+      color: #463D36;
+    }
+    .availability { color: #388e3c; font-weight: bold; }
+    .unavailable { color: #d32f2f; font-weight: bold; }
+
+    /* Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .action-buttons button {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .like-btn { background: #EF721B; color: #fff; }
+    .like-btn:hover { background: #C57237; }
+    .comment-btn { background: #9B6845; color: #fff; }
+    .comment-btn:hover { background: #705744; }
+    .book-btn { background: #C57237; color: #fff; }
+    .book-btn:hover { background: #9B6845; }
+    .book-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #F02956, #F0BF71);
+      color: #fff;
+      padding: 20px 15px;
+      text-align: center;
+    }
+    footer .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    footer h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    footer p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    footer .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 10px 0;
+    }
+    footer .social-links a {
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    footer .social-links a:hover {
+      color: #f5e9e2;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #d81b60, #6b4e31);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    .bottom-nav a {
+      color: #fff;
+      text-align: center;
+      font-size: 22px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .bottom-nav a:hover, .bottom-nav a.active {
+      transform: scale(1.1);
+    }
+    @media (min-width: 768px) {
+      .desktop-nav { display: flex; }
+      .mobile-header, .bottom-nav { display: none; }
+    }
+    @media (max-width: 480px) {
+      .desktop-nav { display: none; }
+      .mobile-header { display: flex; }
+      h1 { font-size: 26px; }
+      .service-card img { height: 150px; }
+      header { padding: 15px 10px; }
+      .logo { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="mobile-header">
+      <a href="home.html" class="logo">Nomadic Salon</a>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="desktop-nav">
+      <a href="home.html" class="logo">Nomadic Salon</a>
+      <a href="home.html"><i class="fas fa-home"></i> Home</a>
+      <a href="services.html" class="active"><i class="fas fa-cut"></i> Services</a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Our Services</h1>
+    <div class="services-grid" id="servicesGrid">
+      <div class="typing-animation">Fetching our amazing services...</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <h3>Nomadic Salon</h3>
+      <p>Transforming beauty with love and artistry in Maseno since 2024.</p>
+      <p>Contact us: <a href="mailto:info@nomadicsalon.com">info@nomadicsalon.com</a> | +254 123 456 789</p>
+      <p>Visit us: 123 Maseno Main Street, Maseno, Kenya</p>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      </div>
+      <p>© 2025 Nomadic Salon. All Rights Reserved. Built by <a href="https://talesonline.com" target="_blank" style="color: #f5e9e2; text-decoration: none;">talesonline</a>.</p>
+    </div>
+  </footer>
+
+  <div class="bottom-nav">
+    <a href="home.html"><i class="fas fa-home"></i></a>
+    <a href="services.html" class="active"><i class="fas fa-cut"></i></a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    <a href="about.html"><i class="fas fa-info-circle"></i></a>
+  </div>
+
+  <!-- Firebase Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+    import { getDatabase, ref, get, update, push } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCnBhAxlbFH4nWqHl1sJEKJfypHngTBbbQ",
+      authDomain: "test-me-563af.firebaseapp.com",
+      databaseURL: "https://test-me-563af-default-rtdb.firebaseio.com",
+      projectId: "test-me-563af",
+      storageBucket: "test-me-563af.firebasestorage.app",
+      messagingSenderId: "937204979799",
+      appId: "1:937204979799:web:f68c032b946a2d5211ab12",
+      measurementId: "G-YETJM8XB8S"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = 'index.html';
+      } else {
+        loadServices(user);
+      }
+    });
+
+    async function loadServices(user) {
+      const servicesGrid = document.getElementById('servicesGrid');
+      servicesGrid.innerHTML = '<p>Loading services...</p>';
+      try {
+        const servicesRef = ref(db, 'services');
+        const snapshot = await get(servicesRef);
+        if (snapshot.exists()) {
+          servicesGrid.innerHTML = '';
+          const services = snapshot.val();
+          Object.keys(services).forEach((key) => {
+            const service = services[key];
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.innerHTML = `
+              <img src="${service.imageUrl || 'https://via.placeholder.com/300x200?text=Service'}" alt="${service.name}">
+              <div class="service-card-content">
+                <h3>${service.name}</h3>
+                <p><strong>Price:</strong> $${service.price.toFixed(2)}</p>
+                <p><strong>Availability:</strong> 
+                  <span class="${service.availability ? 'availability' : 'unavailable'}">
+                    ${service.availability ? 'Available' : 'Unavailable'}
+                  </span>
+                </p>
+                <p><strong>Description:</strong> ${service.description}</p>
+                <p><strong>Duration:</strong> ${service.duration}</p>
+                <p><strong>For:</strong> ${service.targetAudience}</p>
+                <div class="action-buttons">
+                  <button class="like-btn" onclick="likeService('${key}', ${service.likes || 0})">
+                    <i class="fas fa-heart"></i> (${service.likes || 0})
+                  </button>
+                  <button class="comment-btn" onclick="toggleCommentSection('${key}', this)">
+                    <i class="fas fa-comment"></i>
+                  </button>
+                  <button class="book-btn" ${!service.availability ? 'disabled' : ''} 
+                    onclick="bookService('${key}', '${service.name}', ${service.price})">
+                    <i class="fas fa-calendar-check"></i>
+                  </button>
+                </div>
+              </div>
+            `;
+            servicesGrid.appendChild(card);
+          });
+        } else {
+          servicesGrid.innerHTML = '<p>No services available.</p>';
+        }
+      } catch (err) {
+        console.error(err);
+        servicesGrid.innerHTML = '<p>Error loading services.</p>';
+      }
+    }
+
+    window.likeService = async (id, currentLikes) => {
+      const user = auth.currentUser;
+      if (!user) return;
+      try {
+        await update(ref(db, `services/${id}`), { likes: (currentLikes || 0) + 1 });
+        loadServices(user);
+      } catch (e) { console.error(e); }
+    };
+
+    window.bookService = async (id, name, price) => {
+      const user = auth.currentUser;
+      if (!user) return alert('Please log in.');
+      try {
+        const cartRef = ref(db, `users/${user.uid}/cart`);
+        await push(cartRef, {
+          serviceId: id, serviceName: name, price: price,
+          status: 'pending', bookedAt: new Date().toISOString()
+        });
+        alert('Service booked! Check your cart.');
+        loadServices(user);
+      } catch (e) { console.error(e); }
+    };
+
+    window.logout = () => {
+      signOut(auth).then(() => window.location.href = 'index.html');
+    };
+
+    function toggleMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

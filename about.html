@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomadic Salon - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5e9e2, #fce4ec); /* Beige to soft pink */
+            color: #3c2f2f; /* Rich brown */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(90deg, #F03E29, #F08429, #F06228, #F02956, #F0BF71, #F09A79);
+            padding: 20px 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .desktop-nav {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+            padding: 0 10px;
+            background: transparent;
+        }
+        .desktop-nav .logo {
+            margin-right: 15px;
+        }
+        .desktop-nav a {
+            color: #fff;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .desktop-nav a:hover {
+            color: #f5e9e2;
+        }
+        .desktop-nav .social-icons {
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+        }
+        .desktop-nav .social-icons a {
+            color: #fff;
+            font-size: 18px;
+        }
+        .desktop-nav .logout-btn {
+            margin-left: 15px;
+            padding: 8px 12px;
+            background: #fff;
+            color: #F03E29;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .desktop-nav .logout-btn:hover {
+            background: #f5e9e2;
+        }
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: linear-gradient(90deg, #F03E29, #F08429);
+        }
+        .mobile-header .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .mobile-header .social-icons a {
+            color: #fff;
+            font-size: 20px;
+        }
+        .container {
+            flex: 1;
+            padding: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: left;
+            color: #6b4e31;
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        h2 {
+            color: #6b4e31;
+            font-size: 24px;
+            margin: 25px 0 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .section {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in;
+        }
+        .section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4a3728;
+            text-align: left;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-top: 12px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #4a3728;
+        }
+        .feature i {
+            color: #d81b60;
+            font-size: 18px;
+        }
+        .team-grid, .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .team-card, .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .team-card:hover, .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .team-card img, .product-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .team-card-content, .product-card-content {
+            padding: 12px;
+            text-align: left;
+        }
+        .team-card-content h3, .product-card-content h3 {
+            color: #6b4e31;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .team-card-content .title {
+            color: #d81b60;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+        .team-card-content p, .product-card-content p {
+            font-size: 13px;
+            color: #4a3728;
+            line-height: 1.5;
+        }
+        .star-rating {
+            color: #fff;
+            background: #d81b60;
+            font-size: 13px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 6px;
+        }
+        footer {
+            background: linear-gradient(90deg, #F02956, #F0BF71);
+            color: #fff;
+            padding: 20px 15px;
+            text-align: center;
+        }
+        footer .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        footer h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        footer .social-links a {
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        footer .social-links a:hover {
+            color: #f5e9e2;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #d81b60, #6b4e31);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .bottom-nav a {
+            color: #fff;
+            text-align: center;
+            font-size: 22px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .bottom-nav a:hover, .bottom-nav a.active {
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (min-width: 768px) {
+            .desktop-nav { display: flex; }
+            .mobile-header, .bottom-nav { display: none; }
+            .team-card img, .product-card img { height: 180px; }
+            .container { padding: 20px; }
+        }
+        @media (max-width: 480px) {
+            .desktop-nav { display: none; }
+            .mobile-header { display: flex; }
+            h1 { font-size: 26px; }
+            h2 { font-size: 20px; }
+            .section p { font-size: 13px; }
+            .team-card img, .product-card img { height: 140px; }
+            .team-grid, .products-grid { grid-template-columns: 1fr; }
+            .features { flex-direction: column; }
+            header { padding: 15px 10px; }
+            .logo { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="mobile-header">
+            <a href="home.html" class="logo">Nomadic Salon</a>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="desktop-nav">
+            <a href="home.html" class="logo">Nomadic Salon</a>
+            <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            <a href="services.html"><i class="fas fa-cut"></i> Services</a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Welcome to Our Family</h1>
+        <div class="section intro">
+            <p>Welcome to Nomadic Salon, where beauty feels like home. Since 2024, I’ve been part of this warm, inviting space in Maseno, where we pour love and artistry into every hair and makeup service. Step in, and let our family pamper you with care.</p>
+        </div>
+
+        <h2>Why We Started the Salon</h2>
+        <div class="section">
+            <p>I’m proud to be part of Nomadic Salon, launched in 2024 to bring accessible, heartfelt beauty to Maseno. We saw a gap for a place where quality meets affordability, creating a cozy spot where everyone feels valued and celebrated for their unique style.</p>
+        </div>
+
+        <h2>Why We Are Different</h2>
+        <div class="section">
+            <p>I believe what makes us special is our focus on quality without breaking the bank, paired with speedy, efficient service. We use top-tier products and tailor every experience to you, ensuring you leave feeling like the best version of yourself.</p>
+            <div class="features">
+                <div class="feature"><i class="fas fa-dollar-sign"></i> Affordable Prices</div>
+                <div class="feature"><i class="fas fa-clock"></i> Speedy Service – Save Time</div>
+                <div class="feature"><i class="fas fa-heart"></i> Personalized Care</div>
+            </div>
+        </div>
+
+        <h2>Meet Our Hardworking Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/IMG-20250911-WA0012.jpg" alt="Nasra">
+                <div class="team-card-content">
+                    <h3><b>Nasra</b></h3>
+                    <div class="title"><b>Makeup Artist Extraordinaire</b></div>
+                    <p>I’m Nasra, and for 8 years, I’ve been transforming faces into works of art. Whether it’s a bridal glow or a bold editorial look, I love blending colors to highlight your natural beauty. My clients always leave with a smile, ready for any occasion.</p>
+                    <div class="star-rating">★★★★★ 5.0</div>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/eef6625547ccaec9d7c95c07846dfd34.jpg" alt="Joan">
+                <div class="team-card-content">
+                    <h3><b>Joan</b></h3>
+                    <div class="title"><b>Hair Styling Specialist</b></div>
+                    <p>I’m Joan, and with 10 years of experience, I specialize in cornrows and knotless braids. I take pride in crafting protective styles that are both stunning and long-lasting. My consultations ensure your look feels uniquely you.</p>
+                    <div class="star-rating">★★★★☆ 4.7</div>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/IMG-20250911-WA0018.jpg" alt="Storm">
+                <div class="team-card-content">
+                    <h3><b>Storm</b></h3>
+                    <div class="title"><b>Hair Virtuoso</b></div>
+                    <p>I’m Storm, and for 12 years, I’ve been creating bold cuts, vibrant colors, and everything in between. My passion for hair health and innovative styles means you’ll leave with a confident, trendsetting look that lasts.</p>
+                    <div class="star-rating">★★★★☆ 4.3</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Our Trusted Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/ee0f6cfa5ec66d23b03f52f73c6ea8e3.jpg" alt="Lash Hair Extensions">
+                <div class="product-card-content">
+                    <h3>Lash Hair Extensions</h3>
+                    <p>Transform your look with Lash Hair Extensions, crafted from premium human hair. Lightweight and seamless, they add volume and length for everyday glamour or special moments, making every day a good hair day.</p>
+                    <div class="star-rating">★★★★★ 4.8</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/9afb1198ec0e052a4bd9071f7811edff.jpg" alt="TCB Olive Spray">
+                <div class="product-card-content">
+                    <h3>TCB Olive Spray</h3>
+                    <p>TCB Olive Spray is my go-to for taming frizz and adding shine. Packed with olive oil, this mist hydrates and protects, keeping your hair sleek and healthy no matter the weather.</p>
+                    <div class="star-rating">★★★★☆ 4.5</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/d5c805f79fd826b24eb8faf6808a40aa.jpg" alt="Mega Growth Leave-In Conditioner">
+                <div class="product-card-content">
+                    <h3>Mega Growth Leave-In Conditioner</h3>
+                    <p>Mega Growth Leave-In Conditioner strengthens and detangles with a nutrient-rich formula. It’s perfect for keeping your hair vibrant and soft between salon visits, a staple for healthy growth.</p>
+                    <div class="star-rating">★★★★☆ 4.6</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/ce615fb30246d232c90ab18045ff1f2e.jpg" alt="Shampoo and Conditioner Set">
+                <div class="product-card-content">
+                    <h3>Shampoo and Conditioner Set</h3>
+                    <p>Our Shampoo and Conditioner Set gently cleanses while boosting moisture and shine. Infused with natural ingredients, it’s ideal for all hair types, leaving strands soft and ready to dazzle.</p>
+                    <div class="star-rating">★★★★★ 4.9</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/177b04f0e56d09345ea0a1c68aafad95.jpg" alt="Argan Oil Serum">
+                <div class="product-card-content">
+                    <h3>Argan Oil Serum</h3>
+                    <p>Argan Oil Serum is a lightweight miracle that repairs damage and tames flyaways. Its glossy finish and deep hydration make your hair feel like it’s straight from a red-carpet moment.</p>
+                    <div class="star-rating">★★★★☆ 4.4</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/f54fb7ae7c940146227197d961957566.jpg" alt="Coconut Milk Mask">
+                <div class="product-card-content">
+                    <h3>Coconut Milk Mask</h3>
+                    <p>Indulge with our Coconut Milk Mask, a rich treatment that revives dry hair. Use it weekly for silky, strong strands that feel like a tropical getaway in every touch.</p>
+                    <div class="star-rating">★★★★☆ 4.7</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Our Heart in Maseno</h2>
+        <div class="section community">
+            <p>I’m proud to call Maseno home, and at Nomadic Salon, we’re woven into its heartbeat. We host free styling workshops, support local charities, and run our “Beauty in Bloom” event, giving free makeovers to uplift women in need. Join our family in celebrating beauty and community.</p>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <h3>Nomadic Salon</h3>
+            <p>Transforming beauty with love and artistry in Maseno since 2024.</p>
+            <p>Contact us: <a href="mailto:info@nomadicsalon.com">info@nomadicsalon.com</a> | +254 123 456 789</p>
+            <p>Visit us: 123 Maseno Main Street, Maseno, Kenya</p>
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            </div>
+            <p>© 2025 Nomadic Salon. All Rights Reserved. Built by <a href="https://talesonline.com" target="_blank" style="color: #f5e9e2; text-decoration: none;">talesonline</a>.</p>
+        </div>
+    </footer>
+
+    <div class="bottom-nav">
+        <a href="home.html"><i class="fas fa-home"></i></a>
+        <a href="services.html"><i class="fas fa-cut"></i></a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        <a href="about.html" class="active"><i class="fas fa-info-circle"></i></a>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnBhAxlbFH4nWqHl1sJEKJfypHngTBbbQ",
+            authDomain: "test-me-563af.firebaseapp.com",
+            databaseURL: "https://test-me-563af-default-rtdb.firebaseio.com",
+            projectId: "test-me-563af",
+            storageBucket: "test-me-563af.firebasestorage.app",
+            messagingSenderId: "937204979799",
+            appId: "1:937204979799:web:f68c032b946a2d5211ab12",
+            measurementId: "G-YETJM8XB8S"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Logout function
+        window.logout = function() {
+            signOut(auth).then(() => {
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error('Logout error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
