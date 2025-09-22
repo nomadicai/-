@@ -3,165 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nomadic Salon - View and manage your cart. Book premium hair and beauty services in Maseno.">
+    <meta property="og:title" content="Nomadic Salon - Cart">
+    <meta property="og:description" content="Review and pay for your booked services at Nomadic Salon. Complete your beauty experience today!">
+    <meta property="og:image" content="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg">
+    <link rel="icon" href="https://via.placeholder.com/32?text=N">
     <title>Nomadic Salon - Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f5e9e2, #fce4ec);
-            color: #332F2C;
+            background: #ffffff; /* Pure white */
+            color: #000000; /* Black for body text */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+        h1, h2 {
+            color: #3c2f2f; /* Dark brown */
+            text-shadow: 0 0 5px rgba(139, 94, 52, 0.5); /* Subtle glow */
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(139, 94, 52, 0.5); }
+            50% { text-shadow: 0 0 10px rgba(139, 94, 52, 0.7); }
+        }
         header {
-            background: linear-gradient(90deg, #C57237, #9B6845, #EF721B, #705744, #463D36, #332F2C);
-            padding: 20px 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
+            background: linear-gradient(90deg, #6F4E37, #8B5E34, #C19A6B); /* Brown gradient */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .desktop-nav {
-            display: none;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: center;
-            padding: 0 10px;
-            background: transparent;
-        }
-        .desktop-nav .logo {
-            margin-right: 15px;
-        }
-        .desktop-nav a {
-            color: #fff;
-            margin: 0 12px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        .desktop-nav a:hover {
-            color: #f5e9e2;
-        }
-        .desktop-nav .social-icons {
-            margin-left: auto;
-            display: flex;
-            gap: 12px;
-        }
-        .desktop-nav .social-icons a {
-            color: #fff;
-            font-size: 18px;
-        }
-        .desktop-nav .logout-btn {
-            margin-left: 15px;
-            padding: 8px 12px;
-            background: #fff;
-            color: #C57237;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .desktop-nav .logout-btn:hover {
-            background: #f5e9e2;
-        }
-        .mobile-header {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 10px 15px;
-            background: linear-gradient(90deg, #C57237, #9B6845);
+            gap: 20px;
         }
-        .mobile-header .social-icons {
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+            margin-right: 15px;
+        }
+        .logo img {
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #8B5E34;
+        }
+        .logo span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffd700;
+        }
+        .social-links {
             display: flex;
             gap: 10px;
         }
-        .mobile-header .social-icons a {
+        .social-links a {
             color: #fff;
-            font-size: 20px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffd700;
         }
         .container {
             flex: 1;
             padding: 15px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        h1 {
-            text-align: center;
-            color: #705744;
-            font-size: 32px;
-            margin-bottom: 15px;
-            font-weight: bold;
+        hr {
+            border-top: 1px solid #000000;
+            margin: 15px 0;
         }
         .order-steps {
             display: flex;
             justify-content: space-around;
             margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
         }
         .step {
             text-align: center;
         }
         .step i {
             font-size: 20px;
-            color: #9B6845;
+            color: #3c2f2f;
         }
         .step.completed i {
             color: #4caf50;
         }
         .step p {
             font-size: 14px;
-            color: #463D36;
+            color: #000000;
         }
         .summary {
-            background-color: #fff;
+            background: rgba(255, 255, 255, 0.9);
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
             text-align: center;
         }
         .summary h2 {
-            color: #463D36;
             font-size: 22px;
             margin-bottom: 10px;
         }
         .summary p {
             font-size: 18px;
-            color: #332F2C;
+            color: #000000;
             margin-bottom: 5px;
         }
         .summary input {
             padding: 8px;
             margin-top: 10px;
-            border: 1px solid #9B6845;
-            border-radius: 5px;
+            border: 2px solid #8B5E34;
+            border-radius: 20px;
             width: 60%;
+            font-size: 14px;
+            outline: none;
         }
         .summary button {
             padding: 10px 20px;
-            background: #EF721B;
+            background: #8B5E34;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
             margin-top: 10px;
-            transition: background 0.3s;
+            animation: pulse 2s ease-in-out infinite;
         }
         .summary button:hover {
-            background: #C57237;
+            background: #a0522d;
+        }
+        .summary button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        @keyframes pulse {
+            0%, 100% { background: #8B5E34; }
+            50% { background: #a0522d; }
         }
         .cart-items {
             display: flex;
@@ -170,9 +181,8 @@
             margin-bottom: 15px;
         }
         .cart-item {
-            background-color: #fff;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             padding: 12px;
             position: relative;
             transition: transform 0.3s;
@@ -181,21 +191,21 @@
             transform: translateY(-4px);
         }
         .cart-item h3 {
-            color: #705744;
+            color: #3c2f2f;
             margin-bottom: 8px;
             font-size: 20px;
         }
         .cart-item p {
             font-size: 14px;
             margin-bottom: 6px;
-            color: #463D36;
+            color: #000000;
         }
         .status-pending {
-            color: #EF721B;
+            color: #8B5E34;
             font-weight: bold;
         }
-        .status-approved {
-            color: #9B6845;
+        .status-approved, .status-booked {
+            color: #3c2f2f;
             font-weight: bold;
         }
         .delete-btn {
@@ -221,23 +231,23 @@
         .payment-options {
             margin-top: 10px;
             padding: 10px;
-            background: #f5e9e2;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 5px;
         }
         .pay-btn {
             width: 100%;
             padding: 10px;
-            background: #C57237;
+            background: #8B5E34;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
             margin-top: 10px;
-            transition: background 0.3s;
+            animation: pulse 2s ease-in-out infinite;
         }
         .pay-btn:hover {
-            background: #9B6845;
+            background: #a0522d;
         }
         .pay-btn:disabled {
             background: #ccc;
@@ -246,38 +256,39 @@
         .empty-cart {
             text-align: center;
             font-size: 16px;
-            color: #705744;
+            color: #3c2f2f;
         }
         .terms {
-            background-color: #fff;
+            background: rgba(255, 255, 255, 0.9);
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
         }
         .terms h2 {
             font-size: 22px;
-            color: #463D36;
             margin-bottom: 10px;
         }
         .terms p {
             font-size: 14px;
-            color: #332F2C;
+            color: #000000;
             line-height: 1.6;
         }
         footer {
-            background: linear-gradient(90deg, #705744, #463D36);
-            color: #fff;
-            padding: 20px 15px;
+            background: #ffffff; /* White */
+            color: #000000;
+            padding: 20px;
             text-align: center;
+            border-top: 2px solid #000000; /* Black line */
         }
         footer .footer-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         footer h3 {
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 600;
             margin-bottom: 10px;
+            color: #3c2f2f;
         }
         footer p {
             font-size: 14px;
@@ -290,19 +301,19 @@
             margin: 10px 0;
         }
         footer .social-links a {
-            color: #fff;
+            color: #3c2f2f;
             font-size: 18px;
             transition: color 0.3s;
         }
         footer .social-links a:hover {
-            color: #f5e9e2;
+            color: #8B5E34;
         }
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(90deg, #EF721B, #C57237);
+            background: #3c2f2f;
             display: flex;
             justify-content: space-around;
             padding: 8px 0;
@@ -312,7 +323,7 @@
         .bottom-nav a {
             color: #fff;
             text-align: center;
-            font-size: 22px;
+            font-size: 20px;
             text-decoration: none;
             transition: transform 0.3s;
         }
@@ -320,80 +331,130 @@
             transform: scale(1.1);
         }
         @media (min-width: 768px) {
-            .desktop-nav { display: flex; }
-            .mobile-header, .bottom-nav { display: none; }
-            .container { padding: 20px; }
+            .nav-container {
+                flex-wrap: nowrap;
+            }
+            .bottom-nav {
+                display: none;
+            }
+            .container {
+                padding: 20px;
+            }
+            .order-steps {
+                padding: 20px;
+            }
+            .summary h2, .terms h2 {
+                font-size: 24px;
+            }
+            .logo img {
+                height: 50px;
+            }
         }
-        @media (max-width: 480px) {
-            .desktop-nav { display: none; }
-            .mobile-header { display: flex; }
-            h1 { font-size: 26px; }
-            .cart-item { padding: 10px; }
-            .logo { font-size: 22px; }
+        @media (max-width: 767px) {
+            .nav-container {
+                padding: 0;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            footer {
+                display: none;
+            }
+            h1 {
+                font-size: 26px;
+            }
+            .summary h2, .terms h2 {
+                font-size: 20px;
+            }
+            .summary input {
+                width: 80%;
+            }
+            .cart-item {
+                padding: 10px;
+            }
+            .logo img {
+                height: 40px;
+            }
+            .logo span {
+                font-size: 18px;
+            }
+            .social-links {
+                gap: 8px;
+                justify-content: flex-end;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="mobile-header">
-            <a href="home.html" class="logo">Nomadic Salon</a>
-            <div class="social-icons">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg" alt="Nomadic Salon Logo">
+                <span>Nomadic Salon</span>
+            </a>
+            <nav class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="cart.html" class="active">Cart</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="social-links">
                 <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
-        </div>
-        <div class="desktop-nav">
-            <a href="home.html" class="logo">Nomadic Salon</a>
-            <a href="home.html"><i class="fas fa-home"></i> Home</a>
-            <a href="services.html"><i class="fas fa-cut"></i> Services</a>
-            <a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> Cart</a>
-            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-            <div class="social-icons">
-                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            </div>
-            <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
     </header>
+
     <div class="container">
         <h1>Your Cart</h1>
+        <hr>
         <div class="order-steps">
             <div class="step completed"><i class="fas fa-check"></i><p>Identified</p></div>
             <div class="step"><i class="fas fa-check"></i><p>Booked</p></div>
         </div>
+        <hr>
         <div class="summary">
             <h2>Order Summary</h2>
             <p>Total Items: <span id="totalItems">0</span></p>
             <p>Booking Fee: 0 KES</p>
             <p>Total Fee: <span id="totalFee">0 KES</span></p>
-            <input type="text" id="promoCode" placeholder="Enter Promo Code (if available)">
+            <input type="text" id="promoCode" placeholder="Enter Promo Code (e.g., SALON25)">
             <button id="applyPromo">Apply Promo</button>
             <button id="cashOut" class="pay-btn" disabled>Cash Out</button>
         </div>
+        <hr>
         <div class="cart-items" id="cartItems">
             <p>Loading cart...</p>
         </div>
+        <hr>
         <div class="terms">
             <h2>Terms and Conditions</h2>
             <p>Your booking will be served once you report to our salon as per the indicated booked day and time (e.g., 12:08 AM EAT, Friday, September 12, 2025). Please appear at our salon, 123 Maseno Main Street, Maseno, Kenya, as per the time you selected during booking. Terms apply: Bookings are subject to availability, payments are non-refundable after confirmation, and we reserve the right to cancel with prior notice. For 'Pay After Service', payment is due upon completion.</p>
         </div>
     </div>
+
     <footer>
         <div class="footer-content">
             <h3>Nomadic Salon</h3>
             <p>Transforming beauty with love and artistry in Maseno since 2024.</p>
-            <p>Contact us: <a href="mailto:info@nomadicsalon.com">info@nomadicsalon.com</a> | +254 123 456 789</p>
-            <p>Visit us: 123 Maseno Main Street, Maseno, Kenya</p>
+            <p><a href="mailto:info@nomadicsalon.com">info@nomadicsalon.com</a> | +254 123 456 789</p>
+            <p>123 Maseno Main Street, Maseno, Kenya</p>
             <div class="social-links">
-                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
-            <p>© 2025 Nomadic Salon. All Rights Reserved. Built by <a href="https://talesonline.com" target="_blank" style="color: #f5e9e2; text-decoration: none;">talesonline</a>.</p>
+            <p>© 2025 Nomadic Salon. Built by <a href="https://talesonline.com">talesonline</a>.</p>
         </div>
     </footer>
+
     <div class="bottom-nav">
         <a href="home.html"><i class="fas fa-home"></i></a>
         <a href="services.html"><i class="fas fa-cut"></i></a>
@@ -403,7 +464,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
         import { getDatabase, ref, get, update, remove } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
         const firebaseConfig = {
@@ -452,20 +513,20 @@
                         cartItem.classList.add('cart-item');
                         cartItem.innerHTML = `
                             <h3>${item.serviceName}</h3>
-                            <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+                            <p><strong>Price:</strong> ${item.price.toFixed(2)} KES</p>
                             <p><strong>Status:</strong> <span class="status-${item.status}">${item.status.charAt(0).toUpperCase() + item.status.slice(1)}</span></p>
                             <p><strong>Booked At:</strong> ${new Date(item.bookedAt).toLocaleString()}</p>
                             ${item.status === 'pending' ? `
                                 <div class="payment-options">
                                     <button class="pay-btn" onclick="proceedToPayment('${key}', '${item.serviceName}', ${item.price})">Pay Now with IntaSend (M-Pesa STK)</button>
                                 </div>
-                            ` : item.status === 'booked' ? '<p>Your service has been booked. Appear to our salon to be served!</p>' : ''}
+                            ` : item.status === 'booked' ? '<p>Your service has been booked. Appear at our salon to be served!</p>' : ''}
                             <button class="delete-btn" onclick="deleteItem('${key}')"><i class="fas fa-trash"></i></button>
                         `;
                         cartItems.appendChild(cartItem);
                     });
                     totalItemsElem.textContent = totalItems;
-                    totalFeeElem.textContent = `${totalFee} KES`;
+                    totalFeeElem.textContent = `${totalFee.toFixed(2)} KES`;
                     cashOutBtn.disabled = totalItems === 0;
                 } else {
                     cartItems.innerHTML = '<p class="empty-cart">Your cart is empty. Explore our services to book now!</p>';
@@ -498,7 +559,7 @@
         window.proceedToPayment = function(itemId, serviceName, price) {
             const user = auth.currentUser;
             if (!user) return;
-            const paymentUrl = `https://payment.intasend.com?amount=${price}&description=${encodeURIComponent(serviceName)}&itemId=${itemId}&method=mpesa_stk`; // Simulated IntaSend URL with M-Pesa STK
+            const paymentUrl = `https://payment.intasend.com?amount=${price}&description=${encodeURIComponent(serviceName)}&itemId=${itemId}&method=mpesa_stk`; // Simulated IntaSend URL
             window.open(paymentUrl, '_blank');
             alert('Redirecting to IntaSend for M-Pesa STK payment. Complete the payment to confirm your booking.');
             // In production, use IntaSend webhook to update status to 'booked' after payment
@@ -512,21 +573,21 @@
             }, 5000); // Simulated delay for payment processing
         }
 
-        // Apply promo code (simulated)
+        // Apply promo code
         document.getElementById('applyPromo').addEventListener('click', () => {
             const promoCode = document.getElementById('promoCode').value;
             const totalFeeElem = document.getElementById('totalFee');
             let totalFee = parseFloat(totalFeeElem.textContent);
-            if (promoCode === 'SALON10' && totalFee > 0) {
-                totalFee *= 0.9; // 10% discount
+            if (promoCode === 'SALON25' && totalFee > 0) {
+                totalFee *= 0.75; // 25% discount to match home.html
                 totalFeeElem.textContent = `${totalFee.toFixed(2)} KES`;
-                alert('Promo code applied! Enjoy 10% off.');
+                alert('Promo code applied! Enjoy 25% off.');
             } else {
                 alert('Invalid or unavailable promo code.');
             }
         });
 
-        // Cash out (simulated action)
+        // Cash out
         document.getElementById('cashOut').addEventListener('click', () => {
             const totalFee = document.getElementById('totalFee').textContent;
             if (parseFloat(totalFee) > 0) {
@@ -534,13 +595,6 @@
                 // In production, process all cart items to 'booked' or 'approved' status
             }
         });
-
-        // Logout function
-        window.logout = function() {
-            signOut(auth).then(() => {
-                window.location.href = 'index.html';
-            }).catch((error) => {
-                console.error('Logout error:', error);
-            });
-        }
     </script>
+</body>
+</html>
