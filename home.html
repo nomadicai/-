@@ -6,287 +6,433 @@
     <meta name="description" content="Nomadic Salon - Premium hair & beauty services in Maseno. Book your appointment today for a transformative experience!">
     <meta property="og:title" content="Nomadic Salon - Home">
     <meta property="og:description" content="Discover premium hair and beauty services at Nomadic Salon. Book now for a stylish transformation!">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Nomadic+Salon">
+    <meta property="og:image" content="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg">
     <link rel="icon" href="https://via.placeholder.com/32?text=N">
     <title>Nomadic Salon - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f5e9e2, #fce4ec);
-            color: #3c2f2f;
+            background: #ffffff; /* Pure white */
+            color: #000000; /* Black for body text */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+        h1, h2 {
+            color: #3c2f2f; /* Dark brown */
+            text-shadow: 0 0 5px rgba(139, 94, 52, 0.5); /* Subtle glow */
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(139, 94, 52, 0.5); }
+            50% { text-shadow: 0 0 10px rgba(139, 94, 52, 0.7); }
+        }
         header {
-            background: linear-gradient(90deg, #F03E29, #F08429, #F06228, #F02956, #F0BF71, #F09A79);
-            padding: 20px 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, #6F4E37, #8B5E34, #C19A6B); /* Brown gradient */
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 15px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
         .logo img {
-            width: 60px;
-            height: 60px;
+            height: 50px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            vertical-align: middle;
+            border: 2px solid #8B5E34;
         }
         .logo span {
-            font-size: 26px;
+            font-size: 20px;
             font-weight: bold;
-            color: #fff;
-            margin-left: 10px;
-            vertical-align: middle;
         }
-        .desktop-nav {
-            display: none;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: center;
-            padding: 0 10px;
+        .nav-links {
+            display: flex;
+            gap: 20px;
         }
-        .desktop-nav a {
+        .nav-links a {
             color: #fff;
-            margin: 0 12px;
             text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        .right-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .right-area a {
+            color: #fff;
             font-size: 16px;
             transition: color 0.3s;
         }
-        .desktop-nav a:hover {
-            color: #f5e9e2;
+        .right-area a:hover {
+            color: #ffd700;
         }
-        .desktop-nav .social-icons {
-            margin-left: auto;
+        .search-bar {
+            position: relative;
             display: flex;
-            gap: 12px;
+            align-items: center;
         }
-        .desktop-nav .social-icons a {
-            color: #fff;
-            font-size: 18px;
-        }
-        .desktop-nav .logout-btn {
-            margin-left: 15px;
-            padding: 8px 12px;
+        .search-bar input {
+            padding: 6px 25px 6px 10px;
+            border: 2px solid #8B5E34;
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            width: 200px;
             background: #fff;
-            color: #F03E29;
+        }
+        .search-bar i {
+            position: absolute;
+            right: 8px;
+            color: #3c2f2f;
+            font-size: 14px;
+        }
+        .logout-btn {
+            background: #8B5E34;
             border: none;
-            border-radius: 5px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            color: #fff;
             cursor: pointer;
             font-size: 14px;
             transition: background 0.3s;
         }
-        .desktop-nav .logout-btn:hover {
-            background: #f5e9e2;
-        }
-        .mobile-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            background: linear-gradient(90deg, #F03E29, #F08429);
-        }
-        .mobile-header .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-        .mobile-header .social-icons a {
-            color: #fff;
-            font-size: 20px;
+        .logout-btn:hover {
+            background: #a0522d;
         }
         .container {
             flex: 1;
             padding: 15px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        .hero {
-            height: 400px;
-            background: url('https://uploads.onecompiler.io/42jd8ggps/43wegxax4/freepik__the-style-is-candid-image-photography-with-natural__11983.png') no-repeat center center/cover;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .intro {
             text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
-        .hero-content h1 {
+        .intro h1 {
             font-size: 32px;
-            font-weight: bold;
+            margin-bottom: 10px;
         }
-        .hero-content p {
-            font-size: 15px;
-            margin-top: 10px;
+        .intro p {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 15px;
         }
-        .hero .cta-btn {
-            padding: 10px 20px;
-            background: #F03E29;
+        .intro .cta-btn {
+            padding: 12px 25px;
+            background: #8B5E34;
             color: #fff;
             border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-top: 15px;
+            border-radius: 20px;
+            font-size: 16px;
             cursor: pointer;
+            animation: pulse 2s ease-in-out infinite;
         }
-        .hero .cta-btn:hover {
-            background: #F08429;
+        .intro .cta-btn:hover {
+            background: #a0522d;
         }
-        .slider {
-            position: relative;
-            height: 250px;
-            margin-bottom: 5px; /* Reduced space */
-            overflow: hidden;
+        @keyframes pulse {
+            0%, 100% { background: #8B5E34; }
+            50% { background: #a0522d; }
         }
-        .slider img {
-            width: 100%;
-            max-width: 1000px;
-            height: 250px;
-            object-fit: cover;
-            display: none;
+        .reviews {
+            margin-bottom: 15px;
         }
-        .slider img.active {
-            display: block;
-        }
-        .slider-nav {
-            text-align: center;
-            margin-top: 5px;
-        }
-        .slider-nav span {
-            width: 10px;
-            height: 10px;
-            background-color: #ccc;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        .slider-nav span.active {
-            background-color: #F03E29;
-        }
-        .testimonials h2 {
-            color: #6b4e31;
+        .reviews h2 {
             font-size: 24px;
-            margin: 5px 0 12px;
-            text-align: left;
-            font-weight: bold;
-        }
-        .testimonial-slide {
-            display: none;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
             text-align: center;
         }
-        .testimonial-slide.active {
-            display: block;
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
-        .testimonial-slide img {
+        .review-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .review-card img {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             margin-bottom: 10px;
+            object-fit: cover;
         }
-        .testimonial-slide p {
-            font-size: 15px;
-            color: #4a3728;
+        .review-card .stars {
+            color: #facc15; /* Gold for stars */
+            font-size: 18px;
             margin-bottom: 10px;
         }
-        .testimonial-slide .author {
+        .review-card .stars .fa-star-half-alt {
+            color: #facc15;
+        }
+        .review-card p {
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .review-card .author {
             font-size: 13px;
-            color: #6b4e31;
+            color: #3c2f2f;
+            font-weight: 600;
         }
-        .testimonial-nav {
+        .stylists {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .stylists h2 {
             text-align: center;
-            margin-top: 10px;
+            font-size: 24px;
+            margin-bottom: 15px;
         }
-        .testimonial-nav span {
-            width: 10px;
-            height: 10px;
-            background-color: #ccc;
+        .stylists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .stylist-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .stylist-card img {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            display: inline-block;
-            margin: 0 5px;
-            cursor: pointer;
+            margin-bottom: 10px;
+            object-fit: cover;
         }
-        .testimonial-nav span.active {
-            background-color: #d81b60;
+        .stylist-card h3 {
+            color: #3c2f2f;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .stylist-card p {
+            font-size: 14px;
+            color: #000000;
+            line-height: 1.5;
+        }
+        .packages {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .packages h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .package-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .package-card h3 {
+            color: #3c2f2f;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .package-card p {
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .package-card .cta-btn {
+            padding: 10px 20px;
+            background: #8B5E34;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .package-card .cta-btn:hover {
+            background: #a0522d;
+        }
+        .gallery {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .gallery h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .hair-care-tips {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
         .hair-care-tips h2 {
-            color: #6b4e31;
+            text-align: center;
             font-size: 24px;
-            margin: 25px 0 12px;
-            text-align: left;
-            font-weight: bold;
+            margin-bottom: 15px;
         }
         .tips-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
         .tip-card {
-            background-color: #fff;
+            background: #fff;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+        }
+        .tip-card img {
+            width: 50px;
+            display: block;
+            margin: 0 auto 10px;
         }
         .tip-card h3 {
-            color: #6b4e31;
-            font-size: 20px;
-            margin-bottom: 6px;
+            color: #3c2f2f;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
         .tip-card p {
-            font-size: 13px;
-            color: #4a3728;
+            font-size: 14px;
+            color: #000000;
+            line-height: 1.5;
         }
         .actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
         }
         .action-card {
-            background-color: #fff;
+            background: #fff;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
             text-align: center;
+        }
+        .action-card img {
+            width: 50px;
+            margin-bottom: 10px;
         }
         .action-card h3 {
-            color: #6b4e31;
-            font-size: 20px;
-            margin-bottom: 6px;
+            color: #3c2f2f;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
         .action-card p {
-            font-size: 13px;
-            color: #4a3728;
-            margin-bottom: 6px;
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 10px;
+            line-height: 1.5;
         }
         .action-card a {
-            color: #F03E29;
-            text-decoration: underline;
+            color: #8B5E34;
+            font-weight: bold;
+            text-decoration: none;
         }
         .action-card a:hover {
-            color: #F08429;
+            color: #a0522d;
+        }
+        .action-card .promo-code {
+            margin: 10px auto;
+            font-weight: bold;
+            color: #8B5E34;
+            background: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .action-card .cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #8B5E34;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .action-card .cta-btn:hover {
+            background: #a0522d;
         }
         footer {
-            background: linear-gradient(90deg, #F02956, #F0BF71);
-            color: #fff;
-            padding: 20px 15px;
+            background: #ffffff; /* White */
+            color: #000000;
+            padding: 20px;
             text-align: center;
+            border-top: 2px solid #000000; /* Black line */
         }
         footer .footer-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         footer h3 {
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 600;
             margin-bottom: 10px;
+            color: #3c2f2f;
         }
         footer p {
             font-size: 14px;
@@ -299,19 +445,19 @@
             margin: 10px 0;
         }
         footer .social-links a {
-            color: #fff;
+            color: #3c2f2f;
             font-size: 18px;
             transition: color 0.3s;
         }
         footer .social-links a:hover {
-            color: #f5e9e2;
+            color: #8B5E34;
         }
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(90deg, #d81b60, #6b4e31);
+            background: #3c2f2f;
             display: flex;
             justify-content: space-around;
             padding: 8px 0;
@@ -321,7 +467,7 @@
         .bottom-nav a {
             color: #fff;
             text-align: center;
-            font-size: 22px;
+            font-size: 20px;
             text-decoration: none;
             transition: transform 0.3s;
         }
@@ -329,304 +475,301 @@
             transform: scale(1.1);
         }
         @media (min-width: 768px) {
-            .desktop-nav { display: flex; }
-            .mobile-header, .bottom-nav { display: none; }
-            .hero { height: 500px; }
-            .slider { height: 400px; }
-            .container { padding: 20px; }
-            .tips-grid { grid-template-columns: repeat(2, 1fr); }
-            .actions { grid-template-columns: repeat(3, 1fr); }
-            .hero-content h1 { font-size: 48px; }
-            .hero-content p { font-size: 20px; }
-            .hero .cta-btn { padding: 15px 30px; font-size: 18px; }
-            .logo img { width: 60px; height: 60px; }
-            .logo span { font-size: 26px; }
+            .bottom-nav {
+                display: none;
+            }
+            .intro h1 {
+                font-size: 40px;
+            }
+            .intro p {
+                font-size: 18px;
+            }
+            .intro .cta-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+            .reviews h2, .stylists h2, .packages h2, .gallery h2, .hair-care-tips h2 {
+                font-size: 26px;
+            }
+            .reviews-grid, .stylists-grid, .packages-grid, .tips-grid, .actions {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .search-bar input {
+                width: 250px;
+            }
+            .logo img {
+                height: 50px;
+            }
         }
         @media (max-width: 767px) {
-            .hero { height: 200px; }
-            .slider { height: 200px; }
-            .desktop-nav { display: none; }
-            .mobile-header { display: flex; }
-            .tips-grid { grid-template-columns: 1fr; }
-            .actions { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 26px; }
-            .hero-content p { font-size: 13px; }
-            .hero .cta-btn { padding: 8px 15px; font-size: 12px; }
-            .logo img { width: 40px; height: 40px; }
-            .logo span { font-size: 22px; }
+            .nav-container {
+                padding: 0;
+            }
+            .nav-links {
+                display: none;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            footer {
+                display: none;
+            }
+            .intro h1 {
+                font-size: 26px;
+            }
+            .intro p {
+                font-size: 14px;
+            }
+            .intro .cta-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .reviews-grid, .stylists-grid, .packages-grid, .gallery-grid, .tips-grid, .actions {
+                grid-template-columns: 1fr;
+            }
+            .logo img {
+                height: 40px;
+            }
+            .logo span {
+                font-size: 18px;
+            }
+            .search-bar input {
+                width: 120px;
+                font-size: 12px;
+                padding: 5px 20px 5px 8px;
+            }
+            .search-bar i {
+                font-size: 12px;
+                right: 6px;
+            }
+            .right-area {
+                gap: 8px;
+            }
         }
     </style>
 </head>
 <body>
-   <!-- Header -->
-<header>
-  <div class="nav-container">
-    <!-- Left: Logo + Salon Name -->
-    <a href="home.html" class="logo">
-      <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/IMG-20250804-WA0009.jpg" alt="Nomadic Salon Logo">
-      <span>Nomadic Salon</span>
-    </a>
-
-    <!-- Center: Navigation (Desktop only) -->
-    <nav class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="cart.html">Cart</a>
-      <a href="about.html">About</a>
-    </nav>
-
-    <!-- Right: Socials + Logout -->
-    <div class="right-area">
-      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-  </div>
-</header>
-
-<!-- Styles -->
-<style>
-  header {
-    background: linear-gradient(90deg, #6F4E37, #8B5E34, #C19A6B);
-    padding: 10px 15px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  /* Logo + Salon name */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: #fff;
-  }
-
-  .logo img {
-    height: 40px;
-    border-radius: 50%;
-  }
-
-  .logo span {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  /* Navigation links (desktop only) */
-  .nav-links {
-    display: flex;
-    gap: 20px;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .nav-links a:hover {
-    color: #ffd700;
-  }
-
-  /* Right area */
-  .right-area {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
-
-  .right-area a {
-    color: #fff;
-    font-size: 18px;
-    transition: color 0.3s;
-  }
-
-  .right-area a:hover {
-    color: #ffd700;
-  }
-
-  .logout-btn {
-    background: #d2691e;
-    border: none;
-    padding: 5px 12px;
-    border-radius: 15px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s;
-  }
-
-  .logout-btn:hover {
-    background: #a0522d;
-  }
-
-  /* Mobile view */
-  @media (max-width: 768px) {
-    .nav-container {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .nav-links { display: none; } /* Hide nav links on mobile */
-    .right-area {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
-</style>
-
-<!-- Script -->
-<script>
-  function logout() {
-    alert("Logout clicked!");
-    // Replace with your logout logic
-  }
-</script>
-
-
-    <div class="container">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Elevate Your Beauty</h1>
-                <p>Experience world-class hair and beauty services at Nomadic Salon in Maseno.</p>
-                <button class="cta-btn" onclick="window.location.href='services.html'">Book Your Appointment</button>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <img src="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg" alt="Nomadic Salon Logo">
+                <span>Nomadic Salon</span>
+            </a>
+            <nav class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="cart.html">Cart</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="right-area">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search services...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <button class="logout-btn" onclick="logout()">Logout</button>
             </div>
         </div>
+    </header>
 
-        <div class="slider" id="simpleSlider">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/f54fb7ae7c940146227197d961957566.jpg" alt="Haircut Style" class="active">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/177b04f0e56d09345ea0a1c68aafad95.jpg" alt="Styling Session">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/ee0f6cfa5ec66d23b03f52f73c6ea8e3.jpg" alt="Makeup Look">
-            <div class="slider-nav" id="sliderNav"></div>
-        </div>
-<div class="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div id="testimonialSlider">
-        <div class="testimonial-slide active">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43wf3pbd3/9afb1198ec0e052a4bd9071f7811edff.jpg" alt="Sarah">
-            <p>"Nomadic Salon completely transformed my look from the moment I walked in. The staff took time to really listen to what I wanted, gave me professional advice, and ensured I felt comfortable throughout the entire session. I have visited many salons before, but the attention to detail and the personal touch here is unmatched. By the time I left, I not only looked amazing but also felt more confident than ever. I will definitely be coming back again and again."</p>
-            <div class="author">Sarah, Maseno</div>
-        </div>
-        <div class="testimonial-slide">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43w767cqf/Screenshot_20250909-105213%20(2).png" alt="Joy">
-            <p>"The service I received at Nomadic Salon was beyond anything I expected. From the warm welcome at the door to the friendliness of the entire team, I felt valued and cared for. They not only did my hair beautifully but also explained how I could maintain the style at home. It is rare to find a place where professionalism meets such genuine kindness. I have already recommended the salon to all my friends and family, and I cannot wait for my next appointment."</p>
-            <div class="author">Joy, Maseno</div>
-        </div>
-        <div class="testimonial-slide">
-            <img src="https://uploads.onecompiler.io/42jd8ggps/43r789pet/01ec3352d95a3b743b5898ba09dc1e71.jpg" alt="Amina">
-            <p>"My experience at Nomadic Salon was truly the best hair styling session I have ever had. The stylists were incredibly skilled, patient, and attentive to every little detail. They worked with passion, and I could tell they genuinely cared about making sure I left satisfied. The environment was relaxing, clean, and well-organized, which made the whole experience even better. I walked out feeling like a new person, and I highly recommend this salon to anyone looking for high-quality, professional, and caring services."</p>
-            <div class="author">Amina, Maseno</div>
-        </div>
+    <div class="container">
+        <!-- Introduction -->
+        <section class="intro">
+            <h1>Welcome to Nomadic Salon</h1>
+            <p>Transforming beauty with love and artistry in Maseno since 2024. Our expert stylists craft personalized hair and beauty experiences to make you feel confident and radiant.</p>
+            <button class="cta-btn" onclick="window.location.href='services.html'">Book Now</button>
+        </section>
+
+        <!-- Client Reviews -->
+        <section class="reviews">
+            <h2>What Our Clients Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Sarah">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Transformed my look with incredible care and skill. I left feeling more confident!"</p>
+                    <div class="author">Sarah, Maseno</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Joy">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Amazing service and a warm team. My hair looks stunning, and I’ll be back!"</p>
+                    <div class="author">Joy, Maseno</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-36a4278901b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Amina">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>"Skilled stylists and a relaxing vibe. Best salon experience I’ve had!"</p>
+                    <div class="author">Amina, Maseno</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Grace">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"My braids were perfect, and the staff was so welcoming!"</p>
+                    <div class="author">Grace, Maseno</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Linda">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best color treatment I’ve ever had. Highly recommend!"</p>
+                    <div class="author">Linda, Maseno</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1487412720880-24555ff3a8de?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Esther">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>"Great atmosphere and professional service. My go-to salon!"</p>
+                    <div class="author">Esther, Maseno</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Stylists -->
+        <section class="stylists">
+            <h2>Meet Our Stylists</h2>
+            <div class="stylists-grid">
+                <div class="stylist-card">
+                    <img src="https://images.unsplash.com/photo-1519419691348-3b343531e6e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Elizabeth">
+                    <h3>Elizabeth</h3>
+                    <p>Specializing in braids and color treatments, Elizabeth brings 10 years of expertise to create stunning looks.</p>
+                </div>
+                <div class="stylist-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Mercy">
+                    <h3>Mercy</h3>
+                    <p>Mercy excels in haircuts and styling, ensuring every client leaves with confidence.</p>
+                </div>
+                <div class="stylist-card">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Jane">
+                    <h3>Jane</h3>
+                    <p>Jane’s passion for natural hair care and spa treatments creates a relaxing experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Packages -->
+        <section class="packages">
+            <h2>Special Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Glam Makeover</h3>
+                    <p>Includes haircut, color treatment, and styling for a complete transformation.</p>
+                    <button class="cta-btn" onclick="window.location.href='services.html'">Book Now</button>
+                </div>
+                <div class="package-card">
+                    <h3>Spa & Style</h3>
+                    <p>Enjoy a relaxing scalp massage, deep conditioning, and custom styling.</p>
+                    <button class="cta-btn" onclick="window.location.href='services.html'">Book Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Preview -->
+        <section class="gallery">
+            <h2>Our Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1610878180933-123728745d22?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="Hairstyle 1">
+                </div>
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1600948836101-f9ffda7d5b86?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="Hairstyle 2">
+                </div>
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1595475207227-11b71924d8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="Hairstyle 3">
+                </div>
+            </div>
+        </section>
+
+        <!-- Hair Care Tips -->
+        <section class="hair-care-tips">
+            <h2>Hair Care Tips by Elizabeth</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3313/3313547.png" alt="Moisturizing Icon">
+                    <h3>Moisturizing Your Hair</h3>
+                    <p>Keeping your hair hydrated is key to maintaining healthy, shiny strands. Use a deep conditioner weekly, focusing on the ends, and seal with coconut, argan, or jojoba oil.</p>
+                </div>
+                <div class="tip-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2947/2947985.png" alt="Heat Protection Icon">
+                    <h3>Protecting Against Heat</h3>
+                    <p>Excessive heat styling can weaken hair. Apply a heat protectant spray before using tools and explore heatless styling methods like braiding for curls.</p>
+                </div>
+                <div class="tip-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" alt="Trimming Icon">
+                    <h3>Regular Trimming</h3>
+                    <p>Trim every 6–8 weeks to remove split ends and promote stronger, fuller hair. It’s a reset button that keeps your style fresh and healthy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actions -->
+        <section class="actions">
+            <div class="action-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="About Us">
+                <h3>About Us</h3>
+                <p>Learn about our story, journey, and passionate team dedicated to making you feel confident and beautiful.</p>
+                <a href="about.html">Read More</a>
+            </div>
+            <div class="action-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3132/3132656.png" alt="Book a Service">
+                <h3>Book a Service</h3>
+                <p>Secure your spot with our expert stylists. Book a trim, spa session, or full transformation today!</p>
+                <button class="cta-btn" onclick="window.location.href='services.html'">Book Now</button>
+            </div>
+            <div class="action-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Promo Codes">
+                <h3>Get Promo Codes</h3>
+                <p>Unlock exclusive discounts with code SALON25 and enjoy premium services at great rates.</p>
+                <div class="promo-code">SALON25</div>
+            </div>
+            <div class="action-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/4315/4315445.png" alt="Special Offers">
+                <h3>Special Offers</h3>
+                <p>Don’t miss our seasonal deals and member-only rewards for unbeatable value.</p>
+                <a href="services.html">Explore Offers</a>
+            </div>
+        </section>
     </div>
-    <div class="testimonial-nav" id="testimonialNav"></div>
-</div>
-
-       <div class="hair-care-tips" style="padding: 20px; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <h2 style="text-align: center; font-family: Georgia, serif; color: #333;">Hair Care Tips by Elizabeth</h2>
-    <div class="tips-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        
-        <div class="tip-card" style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
-            <img src="https://cdn-icons-png.flaticon.com/512/3313/3313547.png" alt="Moisturizing Icon" style="width:60px; display:block; margin:0 auto 10px;">
-            <h3 style="color: #444;">Moisturizing Your Hair</h3>
-            <p style="font-size: 15px; line-height: 1.6; color: #555;">
-                Keeping your hair <b style="color:#0077b6;">hydrated</b> is one of the most important steps for maintaining <i style="color:#6a0572;">healthy</i>, shiny, and strong strands.  
-                Always use a <b style="color:#e63946;">deep conditioner</b> at least once a week, focusing on the ends where dryness tends to occur the most.  
-                After conditioning, seal in the hydration with a natural oil such as <span style="color:#f4a261; font-weight:bold;">coconut</span>, <span style="color:#2a9d8f; font-weight:bold;">argan</span>, or <span style="color:#e76f51; font-weight:bold;">jojoba oil</span>.  
-                This process not only locks in the <i style="color:#264653;">moisture</i> but also protects your hair from <b style="color:#1d3557;">environmental damage</b>.  
-                Don’t forget: drinking plenty of <span style="color:#457b9d; font-style:italic;">water</span> supports hydration from the inside out.
-            </p>
-        </div>
-
-        <div class="tip-card" style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
-            <img src="https://cdn-icons-png.flaticon.com/512/2947/2947985.png" alt="Heat Protection Icon" style="width:60px; display:block; margin:0 auto 10px;">
-            <h3 style="color: #444;">Protecting Against Heat</h3>
-            <p style="font-size: 15px; line-height: 1.6; color: #555;">
-                Excessive <b style="color:#d62828;">heat styling</b> from tools like flat irons, curling wands, and blow dryers can weaken your hair cuticles, 
-                leading to <span style="color:#f77f00; font-weight:bold;">dryness</span>, <i style="color:#9a031e;">frizz</i>, and breakage.  
-                To prevent this, always apply a <b style="color:#06d6a0;">heat protectant spray</b> or serum before using any heated tool.  
-                Try to keep styling for <span style="color:#118ab2; font-weight:bold;">special occasions</span> rather than daily use.  
-                You can also explore <i style="color:#8338ec;">heatless styling methods</i> such as braiding your hair overnight or using rollers for curls.  
-                Your strands will thank you for reducing heat stress, and you’ll notice <b style="color:#264653;">healthier, stronger hair</b> over time.
-            </p>
-        </div>
-
-        <div class="tip-card" style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
-            <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" alt="Trimming Icon" style="width:60px; display:block; margin:0 auto 10px;">
-            <h3 style="color: #444;">Regular Trimming</h3>
-            <p style="font-size: 15px; line-height: 1.6; color: #555;">
-                Trimming your hair regularly, ideally every <b style="color:#6a0572;">6–8 weeks</b>, is an essential practice for keeping it looking fresh and healthy.  
-                <span style="color:#d62828; font-weight:bold;">Split ends</span> not only make your hair look <i style="color:#6d6875;">dull</i> and frizzy but can also travel up the strand, causing more damage.  
-                A quick trim removes those weak ends and allows your hair to grow <span style="color:#40916c; font-weight:bold;">stronger</span> and fuller.  
-                Even if you are growing your hair long, remember that regular trimming helps maintain the overall <i style="color:#1d3557;">health of your mane</i>.  
-                Think of it as a <b style="color:#ff006e;">reset button</b> that refreshes your style and encourages steady growth.
-            </p>
-        </div>
-
-    </div>
-</div>
-
-
-       <div class="actions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; padding: 20px; background:#fafafa; border-radius: 12px;">
-    
-    <div class="action-card" style="background:#fff; padding:15px; border:1px solid #eee; border-radius:10px; text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="About Us" style="width:60px; margin-bottom:10px;">
-        <h3 style="color:#1d3557;">About Us</h3>
-        <p style="color:#444; line-height:1.6;">
-            Learn more about <b style="color:#e63946;">our story</b>, our journey, and the dedicated <i>team of professionals</i> 
-            who make Nomadic Salon stand out. From our humble beginnings to becoming a trusted brand, we are 
-            passionate about creating styles that make every client feel confident and beautiful.
-        </p>
-        <a href="about.html" style="color:#457b9d; font-weight:bold; text-decoration:none;">Read More</a>
-    </div>
-
-    <div class="action-card" style="background:#fff; padding:15px; border:1px solid #eee; border-radius:10px; text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3132/3132656.png" alt="Book a Service" style="width:60px; margin-bottom:10px;">
-        <h3 style="color:#2a9d8f;">Book a Service</h3>
-        <p style="color:#444; line-height:1.6;">
-            Don’t wait — secure your spot with our expert stylists today. Whether it’s a simple trim, a 
-            relaxing spa session, or a complete transformation, you can <b style="color:#e76f51;">book an appointment</b> 
-            at your convenience. Fast, easy, and tailored to your schedule.
-        </p>
-        <a href="services.html" style="color:#2a9d8f; font-weight:bold; text-decoration:none;">Book Now</a>
-    </div>
-
-    <div class="action-card" style="background:#fff; padding:15px; border:1px solid #eee; border-radius:10px; text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Promo Codes" style="width:60px; margin-bottom:10px;">
-        <h3 style="color:#f77f00;">Get Promo Codes</h3>
-        <p style="color:#444; line-height:1.6;">
-            Unlock <b style="color:#d62828;">exclusive discounts</b> and enjoy premium services at unbeatable rates. 
-            Use the special code below when booking to save on your next visit and 
-            treat yourself without breaking the bank.
-        </p>
-        <div style="margin:10px auto; font-weight:bold; color:#06d6a0; background:#f1faee; padding:5px 10px; border-radius:6px; display:inline-block;">SALON25</div>
-    </div>
-
-    <div class="action-card" style="background:#fff; padding:15px; border:1px solid #eee; border-radius:10px; text-align:center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/4315/4315445.png" alt="Special Offers" style="width:60px; margin-bottom:10px;">
-        <h3 style="color:#8338ec;">Special Offers</h3>
-        <p style="color:#444; line-height:1.6;">
-            Don’t miss out on our <i style="color:#ff006e;">seasonal deals</i> and surprise packages designed 
-            just for you. From <b style="color:#118ab2;">holiday specials</b> to <b style="color:#06d6a0;">member-only rewards</b>, 
-            we constantly bring you new ways to look your best at great value.
-        </p>
-        <a href="services.html" style="color:#8338ec; font-weight:bold; text-decoration:none;">Explore Offers</a>
-    </div>
-
-</div>
-
 
     <footer>
         <div class="footer-content">
@@ -682,56 +825,11 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('#simpleSlider img');
-            const dots = document.getElementById('sliderNav');
-            let slideIndex = 0;
-
-            slides.forEach((_, i) => {
-                const dot = document.createElement('span');
-                dot.classList.add('slider-nav');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => showSlide(i));
-                dots.appendChild(dot);
-            });
-
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.children[slideIndex].classList.remove('active');
-                slideIndex = index;
-                slides[slideIndex].classList.add('active');
-                dots.children[slideIndex].classList.add('active');
-            }
-
-            setInterval(() => {
-                slideIndex = (slideIndex + 1) % slides.length;
-                showSlide(slideIndex);
-            }, 3000);
-
-            const testimonials = document.querySelectorAll('.testimonial-slide');
-            const testimonialDots = document.getElementById('testimonialNav');
-            let testimonialIndex = 0;
-
-            testimonials.forEach((_, i) => {
-                const dot = document.createElement('span');
-                dot.classList.add('testimonial-nav');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => showTestimonial(i));
-                testimonialDots.appendChild(dot);
-            });
-
-            function showTestimonial(index) {
-                testimonials.forEach(test => test.classList.remove('active'));
-                testimonialDots.children[testimonialIndex].classList.remove('active');
-                testimonialIndex = index;
-                testimonials[testimonialIndex].classList.add('active');
-                testimonialDots.children[testimonialIndex].classList.add('active');
-            }
-
-            setInterval(() => {
-                testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-                showTestimonial(testimonialIndex);
-            }, 5000);
+        // Search Bar Functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            console.log('Search query:', query);
+            // Add Firebase search logic here (e.g., query services collection)
         });
     </script>
 </body>

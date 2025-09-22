@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nomadic Salon - Services</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #f5e9e2, #fce4ec); /* Beige to soft pink */
-      color: #3c2f2f; /* Rich brown */
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #fff7f0;
+      color: #2d1e1e;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      line-height: 1.6;
     }
-    a { text-decoration: none; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     /* Header */
     header {
-      background: linear-gradient(90deg, #F03E29, #F08429, #F06228, #F02956, #F0BF71, #F09A79);
-      padding: 20px 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      position: relative;
+      background: linear-gradient(90deg, #ff4d4d, #ff8c4d);
+      padding: 15px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
+    .logo img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
     }
     .desktop-nav {
       display: none;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
+      display: flex;
       align-items: center;
-      padding: 0 10px;
-      background: transparent;
+      gap: 15px;
     }
-    .desktop-nav .logo {
-      margin-right: 15px;
+    .desktop-nav .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .desktop-nav .search-bar {
+      position: relative;
+      margin-left: 20px;
+    }
+    .desktop-nav .search-bar input {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 20px;
+      width: 200px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transition: box-shadow 0.3s;
+    }
+    .desktop-nav .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+    .desktop-nav .search-bar input::placeholder {
+      color: #ffe6cc;
+    }
+    .desktop-nav .search-bar::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 22px;
+      background: linear-gradient(45deg, #ff4d4d, #ff8c4d, #a855f7, #3b82f6);
+      background-size: 400%;
+      animation: rainbowBorder 8s linear infinite;
+      z-index: -1;
     }
     .desktop-nav a {
       color: #fff;
-      margin: 0 12px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 10px;
+      transition: color 0.3s, background 0.3s;
     }
     .desktop-nav a:hover {
-      color: #f5e9e2;
+      color: #ffe6cc;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
     }
     .desktop-nav .social-icons {
       margin-left: auto;
@@ -61,27 +109,70 @@
     .desktop-nav .social-icons a {
       color: #fff;
       font-size: 18px;
+      transition: transform 0.3s;
+    }
+    .desktop-nav .social-icons a:hover {
+      transform: scale(1.2);
     }
     .desktop-nav .logout-btn {
-      margin-left: 15px;
-      padding: 8px 12px;
+      padding: 8px 15px;
       background: #fff;
-      color: #F03E29;
+      color: #ff4d4d;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
     }
     .desktop-nav .logout-btn:hover {
-      background: #f5e9e2;
+      background: #ffe6cc;
+      color: #d43f3f;
     }
     .mobile-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
-      background: linear-gradient(90deg, #F03E29, #F08429);
+      background: linear-gradient(90deg, #ff4d4d, #ff8c4d);
+    }
+    .mobile-header .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mobile-header .search-bar {
+      position: relative;
+      margin-left: 10px;
+    }
+    .mobile-header .search-bar input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 15px;
+      width: 150px;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .mobile-header .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    }
+    .mobile-header .search-bar input::placeholder {
+      color: #ffe6cc;
+    }
+    .mobile-header .search-bar::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 17px;
+      background: linear-gradient(45deg, #ff4d4d, #ff8c4d, #a855f7, #3b82f6);
+      background-size: 400%;
+      animation: rainbowBorder 8s linear infinite;
+      z-index: -1;
     }
     .mobile-header .social-icons {
       display: flex;
@@ -90,160 +181,501 @@
     .mobile-header .social-icons a {
       color: #fff;
       font-size: 20px;
+      transition: transform 0.3s;
     }
-    .container {
-      flex: 1;
-      padding: 15px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    h1 {
-      text-align: left;
-      color: #6b4e31;
-      font-size: 32px;
-      margin-bottom: 15px;
-      font-weight: bold;
+    .mobile-header .social-icons a:hover {
+      transform: scale(1.2);
     }
 
-    /* Services Grid */
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i0.wp.com/cms.babbel.news/wp-content/uploads/2019/10/CM_MagazineHeader_-NomadicLanguages.png?fit=1200%2C675&strip=none&ssl=1');
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Services Section */
+    .container {
+      flex: 1;
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-    }
-    @media (min-width: 600px) {
-      .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      margin-top: 20px;
     }
     .service-card {
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      animation: fadeIn 0.5s ease-in;
     }
     .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
     .service-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .service-card:hover img {
+      transform: scale(1.05);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+      z-index: 1;
     }
     .service-card-content {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
     }
     .service-card h3 {
       font-size: 20px;
-      color: #9B6845;
-      margin-bottom: 8px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: -180px;
+      left: 20px;
+    }
+    .service-card .featured {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #facc15;
+      color: #2d1e1e;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
     }
     .service-card p {
       font-size: 14px;
-      margin-bottom: 6px;
-      line-height: 1.5;
-      color: #463D36;
+      color: #333;
+      margin-bottom: 8px;
     }
-    .availability { color: #388e3c; font-weight: bold; }
-    .unavailable { color: #d32f2f; font-weight: bold; }
-
-    /* Buttons */
+    .availability {
+      color: #2ecc71;
+      font-weight: 600;
+    }
+    .unavailable {
+      color: #e74c3c;
+      font-weight: 600;
+    }
     .action-buttons {
       display: flex;
       gap: 8px;
-      margin-top: auto;
+      margin-top: 15px;
     }
     .action-buttons button {
       flex: 1;
-      padding: 8px;
+      padding: 10px;
       border: none;
       border-radius: 6px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
-    .like-btn { background: #EF721B; color: #fff; }
-    .like-btn:hover { background: #C57237; }
-    .comment-btn { background: #9B6845; color: #fff; }
-    .comment-btn:hover { background: #705744; }
-    .book-btn { background: #C57237; color: #fff; }
-    .book-btn:hover { background: #9B6845; }
-    .book-btn:disabled { background: #ccc; cursor: not-allowed; }
+    .like-btn {
+      background: #ff6b4d;
+      color: #fff;
+    }
+    .like-btn.liked, .like-btn:hover {
+      background: #d43f3f;
+    }
+    .comment-btn {
+      background: #7f5539;
+      color: #fff;
+    }
+    .comment-btn:hover {
+      background: #5c4032;
+    }
+    .book-btn {
+      background: #ff8c4d;
+      color: #fff;
+    }
+    .book-btn:hover {
+      background: #e07b39;
+    }
+    .book-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .comment-section {
+      padding: 15px;
+      background: #fff7f0;
+      border-top: 1px solid #eee;
+      display: none;
+    }
+    .comment-section.active {
+      display: block;
+    }
+    .recent-comments {
+      max-height: 80px;
+      overflow: hidden;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .recent-comments:hover {
+      opacity: 1;
+    }
+    .recent-comments p {
+      font-size: 13px;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .view-all-comments {
+      text-align: center;
+      color: #ff6b4d;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: none;
+    }
+    .view-all-comments:hover {
+      text-decoration: underline;
+    }
+    .comment-section.active .recent-comments {
+      max-height: none;
+    }
+    .comment-section.active .view-all-comments {
+      display: none;
+    }
+    .comment-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      resize: none;
+    }
+    .comment-submit {
+      padding: 8px 15px;
+      background: #ff6b4d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .comment-submit:hover {
+      background: #d43f3f;
+    }
+    .loading-spinner {
+      display: none;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #ff6b4d;
+    }
+    .loading-spinner.active {
+      display: block;
+    }
+    .skeleton {
+      background: #eee;
+      border-radius: 12px;
+      height: 350px;
+      animation: pulse 1.5s infinite;
+    }
+    .no-services {
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+    .no-services button {
+      padding: 10px 20px;
+      background: #ff6b4d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .no-services button:hover {
+      background: #d43f3f;
+    }
+
+    /* Booking Modal */
+    .booking-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .booking-modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease-in;
+    }
+    .modal-content h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .modal-content select, .modal-content button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .modal-content button {
+      background: #ff8c4d;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .modal-content button:hover {
+      background: #e07b39;
+    }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #333;
+    }
+    .loading-spinner.modal-spinner {
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    /* Toast Notifications */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #2ecc71;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 3000;
+      display: none;
+      animation: slideIn 0.3s ease-in;
+      max-width: 300px;
+      font-size: 14px;
+    }
+    .toast.error {
+      background: #e74c3c;
+    }
+    .toast.active {
+      display: block;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #ff6b4d;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    .back-to-top:hover {
+      background: #d43f3f;
+    }
+    .back-to-top.active {
+      display: block;
+    }
+
+    /* Animations */
+    @keyframes rainbowBorder {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { background: #eee; }
+      50% { background: #ddd; }
+      100% { background: #eee; }
+    }
 
     /* Footer */
     footer {
-      background: linear-gradient(90deg, #F02956, #F0BF71);
+      background: linear-gradient(90deg, #ff4d4d, #ff8c4d);
       color: #fff;
-      padding: 20px 15px;
+      padding: 30px 20px;
       text-align: center;
+      display: block;
     }
-    footer .footer-content {
-      max-width: 1000px;
+    .footer-content {
+      max-width: 1200px;
       margin: 0 auto;
     }
     footer h3 {
       font-size: 20px;
-      margin-bottom: 10px;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
     footer p {
       font-size: 14px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
-    footer .social-links {
+    .social-links {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin: 10px 0;
+      margin: 15px 0;
     }
-    footer .social-links a {
+    .social-links a {
       color: #fff;
       font-size: 18px;
-      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.3s;
     }
-    footer .social-links a:hover {
-      color: #f5e9e2;
+    .social-links a:hover {
+      transform: scale(1.1);
     }
+
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(90deg, #d81b60, #6b4e31);
+      background: linear-gradient(90deg, #ff4d4d, #7f5539);
       display: flex;
       justify-content: space-around;
-      padding: 8px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      padding: 10px 0;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
       z-index: 1000;
     }
     .bottom-nav a {
       color: #fff;
-      text-align: center;
       font-size: 22px;
-      text-decoration: none;
       transition: transform 0.3s;
     }
     .bottom-nav a:hover, .bottom-nav a.active {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
+
+    /* Media Queries */
     @media (min-width: 768px) {
-      .desktop-nav { display: flex; }
-      .mobile-header, .bottom-nav { display: none; }
+      .desktop-nav {
+        display: flex;
+      }
+      .mobile-header, .bottom-nav {
+        display: none;
+      }
     }
-    @media (max-width: 480px) {
-      .desktop-nav { display: none; }
-      .mobile-header { display: flex; }
-      h1 { font-size: 26px; }
-      .service-card img { height: 150px; }
-      header { padding: 15px 10px; }
-      .logo { font-size: 22px; }
+    @media (max-width: 767px) {
+      footer {
+        display: none;
+      }
+      .mobile-header {
+        display: flex;
+      }
+      .desktop-nav {
+        display: none;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero p {
+        font-size: 14px;
+      }
+      .service-card img {
+        height: 180px;
+      }
+      .service-card h3 {
+        top: -160px;
+        font-size: 18px;
+      }
+      header {
+        padding: 10px 15px;
+      }
+      .logo img {
+        height: 35px;
+        width: 35px;
+      }
+      .mobile-header .search-bar input {
+        width: 120px;
+        font-size: 12px;
+      }
+      .modal-content {
+        width: 95%;
+      }
     }
   </style>
 </head>
@@ -251,33 +683,56 @@
   <!-- Header -->
   <header>
     <div class="mobile-header">
-      <a href="home.html" class="logo">Nomadic Salon</a>
+      <div class="nav-logo">
+        <div class="logo">
+          <img src="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg" alt="Nomadic Salon Logo" aria-label="Nomadic Salon Logo">
+        </div>
+        <a href="home.html" aria-label="Home"><i class="fas fa-home"></i></a>
+        <div class="search-bar">
+          <input type="text" placeholder="Search services..." oninput="searchServices(this.value)" aria-label="Search Services">
+        </div>
+      </div>
       <div class="social-icons">
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://whatsapp.com" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       </div>
     </div>
     <div class="desktop-nav">
-      <a href="home.html" class="logo">Nomadic Salon</a>
-      <a href="home.html"><i class="fas fa-home"></i> Home</a>
-      <a href="services.html" class="active"><i class="fas fa-cut"></i> Services</a>
-      <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-      <div class="social-icons">
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <div class="nav-logo">
+        <div class="logo">
+          <img src="https://uploads.onecompiler.io/42jd8ggps/43sr7jagr/WhatsApp%20Image%202025-08-04%20at%2023.15.10_56d8c4d6.jpg" alt="Nomadic Salon Logo" aria-label="Nomadic Salon Logo">
+        </div>
+        <a href="home.html" aria-label="Home"><i class="fas fa-home"></i> Home</a>
+        <div class="search-bar">
+          <input type="text" placeholder="Search services..." oninput="searchServices(this.value)" aria-label="Search Services">
+        </div>
       </div>
-      <button class="logout-btn" onclick="logout()">Logout</button>
+      <a href="services.html" class="active" aria-label="Services"><i class="fas fa-cut"></i> Services</a>
+      <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+      <a href="about.html" aria-label="About"><i class="fas fa-info-circle"></i> About</a>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://whatsapp.com" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      <button class="logout-btn" onclick="logout()" aria-label="Logout">Logout</button>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Hero Section -->
+  <div class="hero">
+    <canvas class="particles" id="particles"></canvas>
+    <h1>Explore Our Premium Services</h1>
+    <p>Indulge in world-class beauty treatments at Nomadic Salon in Maseno.</p>
+  </div>
+
+  <!-- Services Section -->
   <div class="container">
-    <h1>Our Services</h1>
     <div class="services-grid" id="servicesGrid">
-      <div class="typing-animation">Fetching our amazing services...</div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
     </div>
   </div>
 
@@ -289,26 +744,51 @@
       <p>Contact us: <a href="mailto:info@nomadicsalon.com">info@nomadicsalon.com</a> | +254 123 456 789</p>
       <p>Visit us: 123 Maseno Main Street, Maseno, Kenya</p>
       <div class="social-links">
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://whatsapp.com" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
       </div>
-      <p>© 2025 Nomadic Salon. All Rights Reserved. Built by <a href="https://talesonline.com" target="_blank" style="color: #f5e9e2; text-decoration: none;">talesonline</a>.</p>
+      <p>© 2025 Nomadic Salon. All Rights Reserved. Built by <a href="https://talesonline.com" target="_blank" style="color: #ffe6cc;">talesonline</a>.</p>
     </div>
   </footer>
 
+  <!-- Bottom Navigation -->
   <div class="bottom-nav">
-    <a href="home.html"><i class="fas fa-home"></i></a>
-    <a href="services.html" class="active"><i class="fas fa-cut"></i></a>
-    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-    <a href="about.html"><i class="fas fa-info-circle"></i></a>
+    <a href="home.html" aria-label="Home"><i class="fas fa-home"></i></a>
+    <a href="services.html" class="active" aria-label="Services"><i class="fas fa-cut"></i></a>
+    <a href="cart.html" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+    <a href="about.html" aria-label="About"><i class="fas fa-info-circle"></i></a>
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="booking-modal" id="bookingModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeBookingModal()" aria-label="Close Modal">&times;</span>
+      <h3 id="modalServiceName">Book Service</h3>
+      <select id="bookingDate" required>
+        <option value="">Select Date</option>
+      </select>
+      <select id="bookingTime" required>
+        <option value="">Select Time</option>
+      </select>
+      <button id="confirmBooking" onclick="confirmBooking()">Confirm Booking</button>
+      <div class="loading-spinner modal-spinner" id="bookingSpinner">Booking...</div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
   </div>
 
   <!-- Firebase Logic -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import { getDatabase, ref, get, update, push } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+    import { getDatabase, ref, get, update, push, set, onValue } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCnBhAxlbFH4nWqHl1sJEKJfypHngTBbbQ",
@@ -324,97 +804,426 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getDatabase(app);
+    let cachedServices = null;
+    let userLikes = {};
+    let currentUser = null;
+    let cacheTimestamp = null;
+    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = 'index.html';
-      } else {
-        loadServices(user);
-      }
-    });
-
-    async function loadServices(user) {
-      const servicesGrid = document.getElementById('servicesGrid');
-      servicesGrid.innerHTML = '<p>Loading services...</p>';
+    // Session Storage
+    function getCachedData(key) {
       try {
+        const data = sessionStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
+      } catch (e) {
+        console.error('Error parsing session storage:', e);
+        return null;
+      }
+    }
+    function setCachedData(key, data) {
+      try {
+        sessionStorage.setItem(key, JSON.stringify(data));
+      } catch (e) {
+        console.error('Error saving to session storage:', e);
+      }
+    }
+
+    // Toast Notification
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${isError ? 'error' : ''} active`;
+      setTimeout(() => { toast.className = 'toast'; }, 3000);
+    }
+
+    // Debounce
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Particle Animation
+    function initParticles() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = document.querySelector('.hero').offsetHeight;
+      const particles = [];
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3 + 1,
+          vx: Math.random() * 2 - 1,
+          vy: Math.random() * 2 - 1,
+          color: ['#ff4d4d', '#ff8c4d', '#a855f7', '#3b82f6'][Math.floor(Math.random() * 4)]
+        });
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // Generate Dates and Times
+    function populateBookingOptions() {
+      const dateSelect = document.getElementById('bookingDate');
+      const timeSelect = document.getElementById('bookingTime');
+      dateSelect.innerHTML = '<option value="">Select Date</option>';
+      timeSelect.innerHTML = '<option value="">Select Time</option>';
+      const today = new Date();
+      for (let i = 0; i < 30; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i);
+        const option = document.createElement('option');
+        option.value = date.toISOString().split('T')[0];
+        option.textContent = date.toLocaleDateString('en-GB', { weekday: 'short', month: 'short', day: 'numeric' });
+        dateSelect.appendChild(option);
+      }
+      for (let hour = 8; hour <= 18; hour++) {
+        const time = `${hour.toString().padStart(2, '0')}:00`;
+        const option = document.createElement('option');
+        option.value = time;
+        option.textContent = time;
+        timeSelect.appendChild(option);
+      }
+    }
+
+    // Load Services
+    const debouncedLoadServices = debounce(async (user) => {
+      const servicesGrid = document.getElementById('servicesGrid');
+      servicesGrid.innerHTML = `
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      `;
+
+      try {
+        // Reset search
+        servicesGrid.dataset.search = '';
+
+        // Check cache
+        const cached = getCachedData('services');
+        cacheTimestamp = getCachedData('cacheTimestamp');
+        if (cached && cacheTimestamp && Date.now() - cacheTimestamp < CACHE_DURATION && Object.keys(cached).length > 0) {
+          cachedServices = cached;
+          userLikes = getCachedData('userLikes') || {};
+          renderServices(cachedServices, user);
+          setupCommentListeners();
+          return;
+        }
+
+        // Fetch user likes
+        const userLikesRef = ref(db, `users/${user.uid}/likes`);
+        const userLikesSnapshot = await get(userLikesRef);
+        userLikes = userLikesSnapshot.exists() ? userLikesSnapshot.val() : {};
+        setCachedData('userLikes', userLikes);
+
+        // Fetch services
         const servicesRef = ref(db, 'services');
         const snapshot = await get(servicesRef);
         if (snapshot.exists()) {
-          servicesGrid.innerHTML = '';
-          const services = snapshot.val();
-          Object.keys(services).forEach((key) => {
-            const service = services[key];
-            const card = document.createElement('div');
-            card.className = 'service-card';
-            card.innerHTML = `
-              <img src="${service.imageUrl || 'https://via.placeholder.com/300x200?text=Service'}" alt="${service.name}">
-              <div class="service-card-content">
-                <h3>${service.name}</h3>
-                <p><strong>Price:</strong> $${service.price.toFixed(2)}</p>
-                <p><strong>Availability:</strong> 
-                  <span class="${service.availability ? 'availability' : 'unavailable'}">
-                    ${service.availability ? 'Available' : 'Unavailable'}
-                  </span>
-                </p>
-                <p><strong>Description:</strong> ${service.description}</p>
-                <p><strong>Duration:</strong> ${service.duration}</p>
-                <p><strong>For:</strong> ${service.targetAudience}</p>
-                <div class="action-buttons">
-                  <button class="like-btn" onclick="likeService('${key}', ${service.likes || 0})">
-                    <i class="fas fa-heart"></i> (${service.likes || 0})
-                  </button>
-                  <button class="comment-btn" onclick="toggleCommentSection('${key}', this)">
-                    <i class="fas fa-comment"></i>
-                  </button>
-                  <button class="book-btn" ${!service.availability ? 'disabled' : ''} 
-                    onclick="bookService('${key}', '${service.name}', ${service.price})">
-                    <i class="fas fa-calendar-check"></i>
-                  </button>
-                </div>
-              </div>
-            `;
-            servicesGrid.appendChild(card);
-          });
+          cachedServices = snapshot.val();
+          if (!cachedServices || Object.keys(cachedServices).length === 0) {
+            throw new Error('No services found in database');
+          }
+          setCachedData('services', cachedServices);
+          setCachedData('cacheTimestamp', Date.now());
+          renderServices(cachedServices, user);
+          setupCommentListeners();
         } else {
-          servicesGrid.innerHTML = '<p>No services available.</p>';
+          servicesGrid.innerHTML = `
+            <div class="no-services">
+              <p>No services available. Try again or check your connection.</p>
+              <button onclick="debouncedLoadServices(currentUser)">Retry</button>
+            </div>
+          `;
         }
       } catch (err) {
-        console.error(err);
-        servicesGrid.innerHTML = '<p>Error loading services.</p>';
+        console.error('Error loading services:', err);
+        servicesGrid.innerHTML = `
+          <div class="no-services">
+            <p>Error loading services: ${err.message}. Please try again.</p>
+            <button onclick="debouncedLoadServices(currentUser)">Retry</button>
+          </div>
+        `;
+        showToast('Failed to load services. Please try again.', true);
+      }
+    }, 500);
+
+    // Setup Comment Listeners
+    function setupCommentListeners() {
+      Object.keys(cachedServices || {}).forEach((serviceId) => {
+        const commentsRef = ref(db, `services/${serviceId}/comments`);
+        onValue(commentsRef, (snapshot) => {
+          if (snapshot.exists()) {
+            cachedServices[serviceId].comments = snapshot.val();
+            setCachedData('services', cachedServices);
+            renderServices(cachedServices, currentUser);
+          }
+        }, (error) => {
+          console.error(`Error listening to comments for service ${serviceId}:`, error);
+        });
+      });
+    }
+
+    // Render Services
+    function renderServices(services, user) {
+      const servicesGrid = document.getElementById('servicesGrid');
+      servicesGrid.innerHTML = '';
+      if (!services || Object.keys(services).length === 0) {
+        servicesGrid.innerHTML = `
+          <div class="no-services">
+            <p>No services found. Try again or check your connection.</p>
+            <button onclick="debouncedLoadServices(currentUser)">Retry</button>
+          </div>
+        `;
+        return;
+      }
+      const search = servicesGrid.dataset.search || '';
+      const featuredService = Object.keys(services)[Math.floor(Math.random() * Object.keys(services).length)];
+      let hasServices = false;
+      Object.keys(services).forEach((key) => {
+        const service = services[key];
+        if (!service.name || !service.price) {
+          console.warn(`Skipping service ${key}: missing required fields (name or price)`);
+          return;
+        }
+        if (search && !service.name.toLowerCase().includes(search) && 
+            !service.description.toLowerCase().includes(search)) return;
+        hasServices = true;
+        const hasLiked = userLikes[key] || false;
+        const comments = service.comments || {};
+        const commentList = Object.entries(comments)
+          .sort((a, b) => new Date(b[1].timestamp) - new Date(a[1].timestamp))
+          .slice(0, 2);
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.innerHTML = `
+          <img src="${service.imageUrl || 'https://via.placeholder.com/300x200?text=Service'}" alt="${service.name}">
+          ${key === featuredService ? '<div class="featured">Featured</div>' : ''}
+          <div class="service-card-content">
+            <h3>${service.name}</h3>
+            <p><strong>Price:</strong> KES ${service.price.toFixed(0)}</p>
+            <p><strong>Availability:</strong> 
+              <span class="${service.availability ? 'availability' : 'unavailable'}">
+                ${service.availability ? 'Available' : 'Unavailable'}
+              </span>
+            </p>
+            <p><strong>Description:</strong> ${service.description || 'No description available'}</p>
+            <p><strong>Duration:</strong> ${service.duration || 'N/A'}</p>
+            <p><strong>For:</strong> ${service.targetAudience || 'All'}</p>
+            <div class="action-buttons">
+              <button class="like-btn ${hasLiked ? 'liked' : ''}" ${hasLiked ? 'disabled' : ''} 
+                onclick="likeService('${key}', ${service.likes || 0}, this)" aria-label="Like Service">
+                <i class="fas fa-heart"></i> (${service.likes || 0})
+              </button>
+              <button class="comment-btn" onclick="toggleCommentSection('${key}', this)" aria-label="Comment on Service">
+                <i class="fas fa-comment"></i> Comment
+              </button>
+              <button class="book-btn" ${!service.availability ? 'disabled' : ''} 
+                onclick="openBookingModal('${key}', '${service.name}', ${service.price})" aria-label="Book Service">
+                <i class="fas fa-calendar-check"></i> Book
+              </button>
+            </div>
+            <div class="comment-section" id="comment-${key}">
+              <div class="recent-comments">
+                ${commentList.map(([id, comment]) => `<p>${comment.text} <small>(${new Date(comment.timestamp).toLocaleString('en-GB')})</small></p>`).join('')}
+              </div>
+              <div class="view-all-comments" onclick="toggleCommentSection('${key}', this)" style="display: ${Object.keys(comments).length > 2 ? 'block' : 'none'}">
+                View All Comments
+              </div>
+              <textarea class="comment-input" placeholder="Add a comment..." aria-label="Comment Input"></textarea>
+              <button class="comment-submit" onclick="submitComment('${key}', '${user.uid}')" aria-label="Submit Comment">Submit</button>
+              <div class="loading-spinner" id="comment-spinner-${key}">Submitting...</div>
+            </div>
+          </div>
+        `;
+        servicesGrid.appendChild(card);
+      });
+      if (!hasServices) {
+        servicesGrid.innerHTML = `
+          <div class="no-services">
+            <p>No services match your search. Try a different keyword.</p>
+            <button onclick="debouncedLoadServices(currentUser)">Retry</button>
+          </div>
+        `;
+      }
+      updateBackToTop();
+    }
+
+    // Search Services
+    window.searchServices = debounce((value) => {
+      document.getElementById('servicesGrid').dataset.search = value.toLowerCase();
+      renderServices(cachedServices, currentUser);
+    }, 300);
+
+    // Like a Service
+    window.likeService = async (id, currentLikes, button) => {
+      if (!currentUser) return showToast('Please log in to like a service.', true);
+      if (userLikes[id]) return showToast('You already liked this service!', true);
+
+      const spinner = document.getElementById(`comment-spinner-${id}`);
+      spinner.classList.add('active');
+      try {
+        const serviceRef = ref(db, `services/${id}`);
+        const userLikesRef = ref(db, `users/${currentUser.uid}/likes/${id}`);
+        await Promise.all([
+          update(serviceRef, { likes: (currentLikes || 0) + 1 }),
+          set(userLikesRef, true)
+        ]);
+        userLikes[id] = true;
+        cachedServices[id].likes = (currentLikes || 0) + 1;
+        setCachedData('userLikes', userLikes);
+        setCachedData('services', cachedServices);
+        button.classList.add('liked');
+        button.disabled = true;
+        button.innerHTML = `<i class="fas fa-heart"></i> (${cachedServices[id].likes})`;
+        showToast('Service liked successfully!');
+      } catch (e) {
+        console.error('Error liking service:', e);
+        showToast('Failed to like service. Please try again.', true);
+      } finally {
+        spinner.classList.remove('active');
+      }
+    };
+
+    // Submit a Comment
+    window.submitComment = async (serviceId, userId) => {
+      if (!currentUser) return showToast('Please log in to comment.', true);
+      const commentInput = document.querySelector(`#comment-${serviceId} .comment-input`);
+      const commentText = commentInput.value.trim();
+      if (!commentText) return showToast('Comment cannot be empty.', true);
+
+      const spinner = document.getElementById(`comment-spinner-${serviceId}`);
+      spinner.classList.add('active');
+      try {
+        const commentsRef = ref(db, `services/${serviceId}/comments`);
+        const newCommentRef = push(commentsRef);
+        await set(newCommentRef, {
+          userId,
+          text: commentText,
+          timestamp: new Date().toISOString()
+        });
+        commentInput.value = '';
+        showToast('Comment added successfully!');
+      } catch (e) {
+        console.error('Error adding comment:', e);
+        showToast('Failed to add comment. Please try again.', true);
+      } finally {
+        spinner.classList.remove('active');
+      }
+    };
+
+    // Toggle Comment Section
+    window.toggleCommentSection = (id, button) => {
+      const commentSection = document.getElementById(`comment-${id}`);
+      commentSection.classList.toggle('active');
+    };
+
+    // Booking Modal
+    let currentBooking = null;
+    window.openBookingModal = (id, name, price) => {
+      currentBooking = { id, name, price };
+      document.getElementById('modalServiceName').textContent = `Book ${name}`;
+      populateBookingOptions();
+      document.getElementById('bookingModal').classList.add('active');
+    };
+    window.closeBookingModal = () => {
+      document.getElementById('bookingModal').classList.remove('active');
+      currentBooking = null;
+    };
+    window.confirmBooking = async () => {
+      if (!currentUser) return showToast('Please log in to book a service.', true);
+      const date = document.getElementById('bookingDate').value;
+      const time = document.getElementById('bookingTime').value;
+      if (!date || !time) return showToast('Please select a date and time.', true);
+
+      const spinner = document.getElementById('bookingSpinner');
+      spinner.classList.add('active');
+      try {
+        const cartRef = ref(db, `users/${currentUser.uid}/cart`);
+        const newCartItemRef = push(cartRef);
+        await set(newCartItemRef, {
+          serviceId: currentBooking.id,
+          serviceName: currentBooking.name,
+          price: currentBooking.price,
+          status: 'pending',
+          bookedAt: new Date().toISOString(),
+          appointmentTime: `${date}T${time}`
+        });
+        showToast('Service booked successfully!');
+        closeBookingModal();
+      } catch (e) {
+        console.error('Error booking service:', e);
+        showToast('Failed to book service. Please try again.', true);
+      } finally {
+        spinner.classList.remove('active');
+      }
+    };
+
+    // Logout
+    window.logout = () => {
+      signOut(auth).then(() => {
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+      }).catch((e) => {
+        console.error('Logout error:', e);
+        showToast('Failed to log out. Please try again.', true);
+      });
+    };
+
+    // Back to Top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function updateBackToTop() {
+      const button = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
       }
     }
+    window.addEventListener('scroll', updateBackToTop);
 
-    window.likeService = async (id, currentLikes) => {
-      const user = auth.currentUser;
-      if (!user) return;
-      try {
-        await update(ref(db, `services/${id}`), { likes: (currentLikes || 0) + 1 });
-        loadServices(user);
-      } catch (e) { console.error(e); }
-    };
+    // Auth State Listener
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        currentUser = user;
+        debouncedLoadServices(user);
+        initParticles();
+      } else {
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+      }
+    });
 
-    window.bookService = async (id, name, price) => {
-      const user = auth.currentUser;
-      if (!user) return alert('Please log in.');
-      try {
-        const cartRef = ref(db, `users/${user.uid}/cart`);
-        await push(cartRef, {
-          serviceId: id, serviceName: name, price: price,
-          status: 'pending', bookedAt: new Date().toISOString()
-        });
-        alert('Service booked! Check your cart.');
-        loadServices(user);
-      } catch (e) { console.error(e); }
-    };
-
-    window.logout = () => {
-      signOut(auth).then(() => window.location.href = 'index.html');
-    };
-
-    function toggleMenu() {
-      const navMenu = document.querySelector('.nav-menu');
-      navMenu.classList.toggle('active');
-    }
+    // Resize Listener
+    window.addEventListener('resize', () => {
+      if (currentUser) debouncedLoadServices(currentUser);
+      const canvas = document.getElementById('particles');
+      canvas.width = window.innerWidth;
+      canvas.height = document.querySelector('.hero').offsetHeight;
+    });
   </script>
 </body>
 </html>
